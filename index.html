@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237B61FF'/%3E%3Cstop offset='0.5' stop-color='%23B14FF0'/%3E%3Cstop offset='1' stop-color='%23FF6A45'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%230F0F18'/%3E%3Crect x='6' y='6' width='20' height='20' rx='5' fill='none' stroke='url(%23g)' stroke-width='2'/%3E%3Crect x='11' y='11' width='10' height='10' rx='3' fill='url(%23g)'/%3E%3C/svg%3E" />
 <title>ModelCore — Training Data, Licensed & Sourced</title>
 <meta name="description" content="Off-the-shelf dataset licensing, data enrichment, and custom collection for frontier AI labs and enterprise teams." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -90,7 +91,7 @@
   .nav-inner{max-width:var(--maxw);margin:0 auto;padding:13px 24px;display:flex;align-items:center;gap:26px}
   .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;cursor:pointer}
   .brand-ico{width:27px;height:27px;flex:0 0 auto;display:block}
-  .brand-name{display:inline-flex;align-items:baseline}
+  .brand-name{display:inline-flex;align-items:baseline;text-transform:uppercase;letter-spacing:.05em}
   .nav-links{display:flex;gap:4px;margin-left:8px}
   .nav-links a{padding:8px 12px;border-radius:8px;font-size:14px;color:var(--muted);font-weight:500;transition:color .15s,background .15s}
   .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.04)}
@@ -406,6 +407,26 @@
     .hero-stats{gap:22px}
     .foot-grid{grid-template-columns:1fr 1fr}
   }
+  @media (max-width:680px){
+    .nav-cta .dd, .nav-cta > .btn-cal{display:none}
+    .lang-table{display:block;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+    .council-note{flex-direction:column;text-align:left;align-items:flex-start}
+    .role-card{flex-direction:column;align-items:flex-start;gap:12px}
+    .ptier{flex-wrap:wrap}
+    .spot-card,.svc-card{padding:22px}
+    .bench-spotlight{padding:24px}
+    .legal-doc table{display:block;overflow-x:auto}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 16px}
+    .hero h1{font-size:clamp(28px,8.5vw,40px)}
+    .about-stats{grid-template-columns:1fr 1fr}
+    .hero-stats{gap:16px}
+    .badge-pop,.badge-prem{font-size:9px;padding:3px 7px}
+    .legal-doc h1{font-size:26px}
+    .custom-hero,.cta-band,.form-card{padding:22px}
+  }
+  h1,h2,h3,h4,p,a,span{overflow-wrap:break-word}
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   }
@@ -698,7 +719,7 @@
     <div class="sec-head">
       <span class="eyebrow">The catalogue</span>
       <h2>Off-the-shelf datasets, ready to license.</h2>
-      <p>Sixty-four production datasets across eight modalities — each rights-cleared, documented, and benchmarked. Click a category to browse.</p>
+      <p>Seventy-one production datasets across eight modalities — each rights-cleared, documented, and benchmarked. Click a category to browse.</p>
     </div>
     <div class="cat-grid" id="homeCats"></div>
   </div>
@@ -1060,7 +1081,7 @@
 
     <div class="about-stats">
       <div class="ast"><div class="n">2023</div><div class="l">Founded</div></div>
-      <div class="ast"><div class="n">64</div><div class="l">Off-the-shelf datasets</div></div>
+      <div class="ast"><div class="n">71</div><div class="l">Off-the-shelf datasets</div></div>
       <div class="ast"><div class="n">220+</div><div class="l">Languages &amp; locales</div></div>
       <div class="ast"><div class="n">40+</div><div class="l">Enterprise &amp; lab partners</div></div>
     </div>
@@ -1210,7 +1231,7 @@
     <div class="cta-band" style="margin-top:34px">
       <span class="eyebrow" style="justify-content:center">Off-the-shelf, too</span>
       <h2>Already-built datasets, ready to license.</h2>
-      <p>Browse 64 production datasets across eight modalities — each rights-cleared, enriched, and benchmarked.</p>
+      <p>Browse 71 production datasets across eight modalities — each rights-cleared, enriched, and benchmarked.</p>
       <div class="hero-cta">
         <button class="btn btn-primary" onclick="go('catalogue')">Browse the catalogue</button>
         <a class="btn btn-ghost btn-cal" href="https://modelcore.zohobookings.com/" target="_blank" rel="noopener">Schedule a call</a>
@@ -1852,6 +1873,55 @@ const PRODUCTS = [
    specs:{Volume:'900k paired episodes',Tasks:'Manipulation & navigation',Format:'Sim + real logs JSONL',Annotation:'Task, randomization, outcome',Sims:'Major robotics simulators',Delivery:'AWS S3 · GCS · Azure',Licensing:'Non-exclusive'},
    use:['Sim-to-real transfer','Domain randomization','Policy robustness'],
    perf:[{n:'900k',l:'Paired episodes'},{n:'Sim+real',l:'Matched'},{n:'Randomized',l:'Domains'}]}
+,
+  {id:'spch-arabic', cat:'speech', name:'Arabic Dialect & Accent Speech', tagline:'MSA plus Egyptian, Gulf, Levantine & Maghrebi dialects.', popular:true,
+   desc:'Conversational and read Arabic speech spanning Modern Standard Arabic and the major regional dialects, with dialect labels and verbatim transcripts — built to fix the Arabic gap most ASR has.',
+   tags:['speech','audio','arabic','dialect','accent','msa','egyptian','gulf','levantine','maghrebi','asr','voice'],
+   specs:{Volume:'9,400 hours',Coverage:'MSA + 5 dialect regions',Format:'WAV 16kHz + JSON/JSONL transcripts',Annotation:'Dialect label, diarization, timestamps',Demographics:'Region & gender balanced',Delivery:'AWS S3 · GCS · Azure',Licensing:'Non-exclusive · exclusive on request'},
+   use:['Arabic & dialect ASR','Voice agents for MENA','Dialect identification'],
+   perf:[{n:'6',l:'Dialect regions'},{n:'4.2%',l:'WER (MSA, verified)'},{n:'9.4k',l:'Hours'}]},
+
+  {id:'spch-clinical', cat:'speech', name:'Clinical & Doctor–Patient Conversations', tagline:'Consented, de-identified medical encounters with intent labels.', popular:true,
+   desc:'Consented and de-identified doctor–patient and clinical conversations with diarization, medical-entity tags, and encounter structure — premium speech for healthcare scribing and clinical voice AI.',
+   tags:['speech','audio','clinical','medical','healthcare','doctor','patient','scribe','diarization','consultation','voice'],
+   specs:{Volume:'6,100 hours',Settings:'Primary care, specialty, telehealth',Format:'WAV 16kHz + JSONL labels',Annotation:'Diarization, medical entities, SOAP structure',Compliance:'Consented, de-identified',Delivery:'AWS S3 · GCS · Azure',Licensing:'Restricted · contract required'},
+   use:['Ambient clinical scribing','Medical ASR','Clinical voice agents'],
+   perf:[{n:'6.1k',l:'Hours'},{n:'De-ID',l:'Compliant'},{n:'5.8%',l:'WER (clinical)'}]},
+
+  {id:'spch-meeting', cat:'speech', name:'Meeting & Multi-Party Conference Speech', tagline:'Overlapping multi-speaker meetings with role labels.',
+   desc:'Real and simulated multi-party meetings and conference calls with heavy speaker overlap, diarization, and role labels — for meeting transcription, summarization, and speaker attribution.',
+   tags:['speech','audio','meeting','conference','multi-speaker','overlap','diarization','transcription','summarization','voice'],
+   specs:{Volume:'7,300 hours',Speakers:'2–12 per session',Format:'Multi-channel WAV + transcripts',Annotation:'Diarization, role, overlap regions',Conditions:'In-room, remote, hybrid',Delivery:'AWS S3 · GCS · Azure',Licensing:'Non-exclusive'},
+   use:['Meeting transcription & notes','Speaker diarization','Summarization & action items'],
+   perf:[{n:'7.3k',l:'Hours'},{n:'0.94',l:'Diarization F1'},{n:'12',l:'Max speakers'}]},
+
+  {id:'spch-codeswitch', cat:'speech', name:'Code-Switching & Bilingual Speech', tagline:'Natural intra-sentence language mixing, labeled per token.',
+   desc:'Spontaneous bilingual speech where speakers switch languages within and across sentences — Spanglish, Hinglish, Arabic-French and more — with token-level language tags for robust multilingual ASR.',
+   tags:['speech','audio','code-switching','bilingual','multilingual','spanglish','hinglish','mixed','asr','voice'],
+   specs:{Volume:'4,800 hours',Pairs:'30+ language pairs',Format:'WAV 16kHz + token-tagged transcripts',Annotation:'Per-token language ID, diarization',Style:'Spontaneous conversation',Delivery:'AWS S3 · GCS · Azure',Licensing:'Non-exclusive'},
+   use:['Code-switch robust ASR','Multilingual voice agents','Language-ID modeling'],
+   perf:[{n:'30+',l:'Language pairs'},{n:'4.8k',l:'Hours'},{n:'Token',l:'Language tags'}]},
+
+  {id:'vid-surgical', cat:'video', name:'Surgical & Clinical Procedure Video', tagline:'Consented, de-identified procedure footage with phase & tool labels.',
+   desc:'Consented and de-identified surgical and clinical procedure video annotated with surgical phases, instruments, and anatomy — premium multimodal data for surgical AI and clinical assistance.',
+   tags:['video','multimodal','surgical','medical','clinical','procedure','phase','instrument','healthcare','endoscopy'],
+   specs:{Volume:'3,200 hours',Procedures:'Laparoscopic, endoscopic, open, more',Format:'MP4 + phase/tool JSON',Annotation:'Surgical phase, instrument, anatomy',Compliance:'Consented, de-identified',Delivery:'AWS S3 · GCS · Azure',Licensing:'Restricted · contract required'},
+   use:['Surgical phase recognition','Tool & anatomy detection','Clinical assistance models'],
+   perf:[{n:'3.2k',l:'Hours'},{n:'De-ID',l:'Compliant'},{n:'Phase',l:'Annotated'}]},
+
+  {id:'vid-sign', cat:'video', name:'Sign Language Video', tagline:'Multiple sign languages with gloss & translation.',
+   desc:'Fluent sign-language video across several national sign languages, annotated with gloss, translation, and signer metadata — for sign recognition, translation, and accessible AI.',
+   tags:['video','multimodal','sign language','asl','accessibility','gloss','translation','gesture','deaf','inclusive'],
+   specs:{Volume:'2,600 hours',Languages:'8+ sign languages',Format:'MP4 + gloss/translation JSON',Annotation:'Gloss, spoken-language translation, signer meta',Consent:'Documented consent',Delivery:'AWS S3 · GCS · Azure',Licensing:'Non-exclusive · exclusive on request'},
+   use:['Sign-language recognition','Sign-to-text translation','Accessible interfaces'],
+   perf:[{n:'8+',l:'Sign languages'},{n:'2.6k',l:'Hours'},{n:'Gloss',l:'+ translation'}]},
+
+  {id:'vid-retail', cat:'video', name:'Retail & In-Store Activity Video', tagline:'Consented in-store footage with action & interaction labels.',
+   desc:'Consented retail and in-store video annotated for shopper actions, product interactions, and zones — for retail analytics, loss-prevention, and embodied commerce models.',
+   tags:['video','multimodal','retail','in-store','activity','shopper','action','commerce','analytics','interaction'],
+   specs:{Volume:'5,400 hours',Settings:'Grocery, apparel, convenience, more',Format:'MP4 + action/zone JSON',Annotation:'Actions, product interactions, zones',Consent:'Documented consent',Delivery:'AWS S3 · GCS · Azure',Licensing:'Non-exclusive'},
+   use:['Retail analytics','Shopper-behavior models','Embodied commerce'],
+   perf:[{n:'5.4k',l:'Hours'},{n:'Action',l:'Labeled'},{n:'Zone',l:'Mapped'}]}
 ];
 
 const FAQS = [
@@ -1874,13 +1944,17 @@ const FAQS = [
 /* ============================================================
    ROUTER
    ============================================================ */
-function go(view, opts){
+function showView(view){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   const el = document.getElementById('view-'+view);
   if(el){el.classList.add('active');}
   window.scrollTo({top:0,behavior:'instant' in window ? 'instant':'auto'});
   // close mobile nav
-  document.getElementById('navLinks').classList.remove('mobile-open');
+  const nl=document.getElementById('navLinks'); if(nl) nl.classList.remove('mobile-open');
+}
+function go(view, opts){
+  showView(view);
+  if(!(opts && opts.fromPop)) history.pushState({view:view}, '', '#'+view);
 }
 function toggleMobileNav(){ document.getElementById('navLinks').classList.toggle('mobile-open'); }
 
@@ -1963,7 +2037,25 @@ function renderFilters(){
     <input type="checkbox" value="${c.id}" onchange="toggleFilter('${c.id}')"> ${c.name}</label>`).join('');
 }
 function toggleFilter(id){ activeFilters.has(id)?activeFilters.delete(id):activeFilters.add(id); filterCatalogue(); }
-function priceHint(p){ return p.pm==='audio' ? 'from $0.10/min' : 'On request'; }
+const PRICING = {
+  speech:   {label:'per minute of audio', unit:'/min', foot:'≈ $6 / $48 / $72 per hour · volume discounts available', hint:'from $0.10/min',
+             tiers:[['Baseline audio','source audio + transcripts','$0.10'],['Enriched','diarization · labels · alignment','$0.80'],['Human-verified gold',"QA'd, corrected transcripts",'$1.20']]},
+  video:    {label:'per hour of video', unit:'/hr', foot:'Volume discounts at scale', hint:'from $8/hr',
+             tiers:[['Baseline video','raw + shot & scene metadata','$8'],['Enriched','captions · actions · tracking','$95'],['Human-verified gold','reviewed annotations','$190']]},
+  image:    {label:'per 1,000 images', unit:'/1k', foot:'Priced per 1,000 images · volume discounts', hint:'from $4/1k',
+             tiers:[['Baseline images','images + metadata','$4'],['Enriched','captions · boxes · masks','$40'],['Human-verified gold','expert-reviewed labels','$90']]},
+  text:     {label:'per million tokens', unit:'/1M', foot:'Priced per million tokens', hint:'from $2/1M tok',
+             tiers:[['Baseline text','cleaned + deduplicated','$2'],['Enriched','structured · labeled','$18'],['Human-verified gold','expert-reviewed','$45']]},
+  code:     {label:'per million tokens', unit:'/1M', foot:'Priced per million tokens', hint:'from $3/1M tok',
+             tiers:[['Baseline code','permissive + deduplicated','$3'],['Enriched','traces · tests · docs','$22'],['Human-verified gold','reviewed','$55']]},
+  reason:   {label:'per 1,000 items', unit:'/1k', foot:'Priced per 1,000 items', hint:'from $120/1k',
+             tiers:[['Baseline','problems + final answers','$120'],['Enriched','step-verified rationale','$600'],['Human-verified gold','expert-authored','$1,200']]},
+  feedback: {label:'per 1,000 items', unit:'/1k', foot:'Priced per 1,000 items', hint:'from $150/1k',
+             tiers:[['Baseline','labeled items','$150'],['Enriched','rationale · multi-rater','$700'],['Human-verified gold','expert-verified','$1,400']]},
+  robotics: {label:'per hour of data', unit:'/hr', foot:'Priced per hour · volume discounts', hint:'from $20/hr',
+             tiers:[['Baseline','synced sensor logs','$20'],['Enriched','labels · annotations','$140'],['Human-verified gold','reviewed trajectories','$280']]}
+};
+function priceHint(p){ if(p.premium) return 'On request'; const m=PRICING[p.cat]; return m? m.hint : 'On request'; }
 function renderCatalogue(list){
   const grid = document.getElementById('productGrid');
   const empty = document.getElementById('catEmpty');
@@ -2000,7 +2092,7 @@ function filterCatalogue(){
 /* ============================================================
    PRODUCT DETAIL
    ============================================================ */
-function openProduct(id){
+function openProduct(id, fromPop){
   const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
   const cat = CATEGORIES.find(c=>c.id===p.cat);
   document.getElementById('pdCrumb').textContent = p.name;
@@ -2021,21 +2113,20 @@ function openProduct(id){
     <div class="row"><span>Dataset ID</span><span class="copy-id" onclick="copyId(event,'${p.id}')">${p.id} ⧉</span></div>
     <div class="row"><span>Sample</span><span>Free on request</span></div>`;
   currentProduct = p;
-  go('product');
+  showView('product');
+  if(!fromPop) history.pushState({view:'product', id:p.id}, '', '#product/'+p.id);
 }
 function pricingBlock(p){
-  if(p.pm==='audio'){
-    return `<div class="price-label">Pricing · per minute of audio</div>
-    <div class="price-tiers">
-      <div class="ptier"><div class="pt-l"><span class="pt-name">Baseline audio</span><span class="pt-sub">source audio + transcripts</span></div><div class="pt-price">$0.10<small>/min</small></div></div>
-      <div class="ptier feature"><div class="pt-l"><span class="pt-name">Enriched</span><span class="pt-sub">diarization · labels · alignment</span></div><div class="pt-price">$0.80<small>/min</small></div></div>
-      <div class="ptier"><div class="pt-l"><span class="pt-name">Human-verified gold</span><span class="pt-sub">QA'd, corrected transcripts</span></div><div class="pt-price">$1.20<small>/min</small></div></div>
-    </div>
-    <div class="ph-note">≈ $6 / $48 / $72 per hour · volume discounts available</div>`;
-  }
-  return `<div class="price-label">Pricing</div>
+  const m = PRICING[p.cat];
+  if(p.premium || !m){
+    return `<div class="price-label">Pricing</div>
     <div class="price">On request <small>· request a quote</small></div>
     <div class="ph-note">Quoted to your volume, exclusivity &amp; enrichment</div>`;
+  }
+  const rows = m.tiers.map((t,i)=>`<div class="ptier${i===1?' feature':''}"><div class="pt-l"><span class="pt-name">${t[0]}</span><span class="pt-sub">${t[1]}</span></div><div class="pt-price">${t[2]}<small>${m.unit}</small></div></div>`).join('');
+  return `<div class="price-label">Pricing · ${m.label}</div>
+    <div class="price-tiers">${rows}</div>
+    <div class="ph-note">${m.foot}</div>`;
 }
 function copyId(e,id){ e.stopPropagation(); try{ navigator.clipboard.writeText(id); }catch(_){ } toast('Dataset ID copied · '+id); }
 function zohoValidate(f){
@@ -2134,6 +2225,18 @@ function initWave(){
     ctx.setTransform(dpr,0,0,dpr,0,0);
   }
   resize(); window.addEventListener('resize',resize);
+  canvas.style.cursor='crosshair';
+
+  // pointer tracking — on hover the visualization follows the mouse
+  let hovering=false, mX=0.5, mY=0.5;
+  function setPt(cx,cy){ const r=canvas.getBoundingClientRect(); mX=Math.min(1,Math.max(0,(cx-r.left)/r.width)); mY=Math.min(1,Math.max(0,(cy-r.top)/r.height)); }
+  canvas.addEventListener('mouseenter',function(){ hovering=true; });
+  canvas.addEventListener('mouseleave',function(){ hovering=false; });
+  canvas.addEventListener('mousemove',function(e){ hovering=true; setPt(e.clientX,e.clientY); });
+  canvas.addEventListener('touchstart',function(e){ hovering=true; if(e.touches[0]) setPt(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
+  canvas.addEventListener('touchmove',function(e){ hovering=true; if(e.touches[0]) setPt(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
+  canvas.addEventListener('touchend',function(){ hovering=false; });
+
   let phase = 0;
   function roundRect(c,x,y,w,h,r){
     r=Math.min(r,Math.abs(w)/2,Math.abs(h)/2);
@@ -2146,42 +2249,49 @@ function initWave(){
   const bars = 64;
   function drawAudio(){
     const bw=W/bars, mid=H/2;
+    const cx = hovering ? mX*W : (Math.sin(phase*0.4)*0.5+0.5)*W;
     ctx.fillStyle=gradH();
     for(let i=0;i<bars;i++){
       const env=Math.sin((i/bars)*Math.PI);
       const noise=Math.sin(i*0.5+phase)*0.5+Math.sin(i*0.13-phase*0.7)*0.5;
       let amp=(0.25+0.75*Math.abs(noise))*env;
       if(i>bars*0.66){ amp=0.35+0.25*Math.sin(i*0.9); }
+      const bx=i*bw+bw/2;
+      const d=Math.abs(bx-cx)/(W*0.16);
+      amp += Math.max(0,1-d)*0.7*env;            // bars rise toward the cursor
       const h=Math.max(2,amp*(H*0.42));
       roundRect(ctx, i*bw+bw*0.18, mid-h, bw*0.64, h*2, bw*0.32);
     }
-    const sx=(Math.sin(phase*0.4)*0.5+0.5)*W;
-    ctx.fillStyle='rgba(70,229,200,0.10)'; ctx.fillRect(sx-1,0,2,H);
+    ctx.fillStyle='rgba(70,229,200,'+(hovering?0.5:0.12)+')'; ctx.fillRect(cx-1,0,2,H);
   }
 
   function drawVideo(){
     const fw=W/6, off=(phase*16)%fw, top=H*0.17, fh=H*0.66;
     ctx.fillStyle='rgba(255,255,255,0.05)';
     for(let x=-off; x<W; x+=fw/3){ ctx.fillRect(x,H*0.05,fw*0.06,H*0.045); ctx.fillRect(x,H*0.905,fw*0.06,H*0.045); }
+    const cx = hovering ? mX*W : (Math.sin(phase*0.25)*0.5+0.5)*W;
     for(let i=-1;i<7;i++){
       const x=i*fw-off;
-      const b=0.30+0.55*Math.abs(Math.sin(i*0.8+phase*0.3));
+      let b=0.30+0.55*Math.abs(Math.sin(i*0.8+phase*0.3));
+      if(cx>=x && cx<x+fw) b=Math.min(1,b+0.40);   // frame under cursor brightens
       const g=ctx.createLinearGradient(x,top,x,top+fh);
       g.addColorStop(0,'rgba(123,97,255,'+(0.20+b*0.5)+')');
       g.addColorStop(1,'rgba(255,106,69,'+(0.10+b*0.42)+')');
       ctx.fillStyle=g; roundRect(ctx, x+5, top, fw-10, fh, 7);
       ctx.fillStyle='rgba(255,255,255,'+(0.05+b*0.07)+')'; roundRect(ctx, x+12, top+fh*0.64, fw-24, fh*0.11, 3);
     }
-    const px=(Math.sin(phase*0.25)*0.5+0.5)*W;
-    ctx.fillStyle='rgba(70,229,200,0.85)'; ctx.fillRect(px-1,top-7,2,fh+14);
-    ctx.beginPath(); ctx.arc(px,top-7,3.2,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='rgba(70,229,200,0.85)'; ctx.fillRect(cx-1,top-7,2,fh+14);
+    ctx.beginPath(); ctx.arc(cx,top-7,3.2,0,Math.PI*2); ctx.fill();
   }
 
   function drawText(){
     const rows=5, rh=H/(rows+1);
+    const activeRow = hovering ? Math.min(rows-1,Math.max(0,Math.floor(mY*rows))) : -1;
     for(let r=0;r<rows;r++){
       const y=rh*(r+0.62);
-      const head=(((phase*0.066+r*0.37)%1))*(W*0.9)+W*0.05;
+      let head;
+      if(hovering && r===activeRow){ head = mX*(W*0.9)+W*0.05; }
+      else { head=(((phase*0.066+r*0.37)%1))*(W*0.9)+W*0.05; }
       let x=W*0.05, ti=0;
       while(x<W*0.93){
         const tw=12+((ti*29+r*17)%52);
@@ -2193,7 +2303,8 @@ function initWave(){
         ctx.globalAlpha=1;
         x+=tw+7; ti++;
       }
-      if(Math.sin(phase*0.5)>0){ ctx.fillStyle='#46E5C8'; ctx.fillRect(head, y-3, 2, rh*0.4); }
+      const blink = (hovering && r===activeRow) ? true : (Math.sin(phase*0.5)>0);
+      if(blink){ ctx.fillStyle='#46E5C8'; ctx.fillRect(head, y-3, 2, rh*0.4); }
     }
   }
 
@@ -2203,7 +2314,7 @@ function initWave(){
     ctx.fillStyle='rgba(255,255,255,0.10)';
     for(let r=0;r<rows;r++){ ctx.fillRect(W*0.025, rh*(r+0.6)+rh*0.10, 9, 2); }
     const palette=['#7B61FF','#FF6A45','#46E5C8','rgba(255,255,255,0.22)'];
-    const active=Math.floor((phase*0.04)%rows);
+    const active = hovering ? Math.min(rows-1,Math.max(0,Math.floor(mY*rows))) : Math.floor((phase*0.04)%rows);
     for(let r=0;r<rows;r++){
       const y=rh*(r+0.6), ind=indents[r%indents.length];
       let x=W*0.06+ind*W*0.06;
@@ -2211,15 +2322,17 @@ function initWave(){
       for(let s=0;s<segs && x<W*0.92;s++){
         const sw=24+((r*19+s*41)%88);
         ctx.fillStyle=palette[(s+r)%palette.length];
-        ctx.globalAlpha=0.82; roundRect(ctx, x, y, sw, rh*0.28, 3); ctx.globalAlpha=1;
+        ctx.globalAlpha=(r===active)?0.96:0.80; roundRect(ctx, x, y, sw, rh*0.28, 3); ctx.globalAlpha=1;
         x+=sw+8;
       }
-      if(r===active && Math.sin(phase*0.5)>0){ ctx.fillStyle='#46E5C8'; ctx.fillRect(x, y-3, 2, rh*0.38); }
+      const cursorX = (hovering && r===active) ? Math.max(W*0.06, mX*W) : x;
+      if(r===active && (hovering || Math.sin(phase*0.5)>0)){ ctx.fillStyle='#46E5C8'; ctx.fillRect(cursorX, y-3, 2, rh*0.38); }
     }
   }
 
   function metaText(){
     if(reduce) return 'structured';
+    if(hovering) return 'tracking ●';
     if(vizMode==='audio') return 'enriching '+Math.round((Math.sin(phase*0.3)*0.5+0.5)*100)+'%';
     if(vizMode==='video') return 'decoding · 4K frames';
     if(vizMode==='text') return 'streaming tokens';
@@ -2235,7 +2348,7 @@ function initWave(){
     const meta=document.getElementById('wave-meta');
     if(meta) meta.textContent=metaText();
     phase += reduce?0:0.05;
-    if(vizAuto && !reduce){ vizTick++; if(vizTick>360){ vizTick=0; const i=VIZ_ORDER.indexOf(vizMode); vizMode=VIZ_ORDER[(i+1)%VIZ_ORDER.length]; syncVizTabs(); } }
+    if(vizAuto && !hovering && !reduce){ vizTick++; if(vizTick>360){ vizTick=0; const i=VIZ_ORDER.indexOf(vizMode); vizMode=VIZ_ORDER[(i+1)%VIZ_ORDER.length]; syncVizTabs(); } }
     if(!reduce) requestAnimationFrame(draw);
   }
   draw();
@@ -2516,10 +2629,10 @@ function showLegal(id, noScroll){
   document.querySelectorAll('.legal-nav button').forEach(b=>b.classList.toggle('active', b.dataset.doc===id));
   if(!noScroll) window.scrollTo({top:0,behavior:'smooth'});
 }
-function openLegal(id){ go('legal'); showLegal(id, true); }
+function openLegal(id){ showView('legal'); showLegal(id, true); history.pushState({view:'legal', doc:id}, '', '#legal/'+id); }
 
 function renderTicker(){
-  const items=['220+ languages covered','64 datasets · 8 modalities','Audio from $0.10/min','Human-verified gold <2% WER','JSON + JSONL enrichment','Delivered via AWS S3 · GCS · Azure','No deal too large or too small','Sourced ethically worldwide','Council-of-models enrichment','Rights-cleared by design'];
+  const items=['220+ languages covered','71 datasets · 8 modalities','Audio from $0.10/min','Human-verified gold <2% WER','JSON + JSONL enrichment','Delivered via AWS S3 · GCS · Azure','No deal too large or too small','Sourced ethically worldwide','Council-of-models enrichment','Rights-cleared by design'];
   const row = items.map(t=>'<span><b>◆</b> '+t+'</span>').join('');
   const el=document.getElementById('ticker');
   if(el) el.innerHTML = row + row;
@@ -2544,6 +2657,30 @@ document.addEventListener('keydown',function(e){
     if(s){ e.preventDefault(); go('home'); setTimeout(function(){s.focus();},60); }
   }
 });
+
+/* ---- History / back-button routing ---- */
+function routeFromHash(){
+  var h=(location.hash||'').replace(/^#/,'');
+  if(!h){ showView('home'); return; }
+  var parts=h.split('/');
+  if(parts[0]==='product' && parts[1]){ openProduct(parts[1], true); return; }
+  if(parts[0]==='legal'){ showView('legal'); showLegal(parts[1]||'privacy', true); return; }
+  if(document.getElementById('view-'+parts[0])){ showView(parts[0]); } else { showView('home'); }
+}
+window.addEventListener('popstate', function(e){
+  var s=e.state;
+  if(s && s.view==='product' && s.id){ openProduct(s.id, true); return; }
+  if(s && s.view==='legal'){ showView('legal'); showLegal(s.doc||'privacy', true); return; }
+  if(s && s.view){ showView(s.view); return; }
+  routeFromHash();
+});
+(function(){
+  var h=(location.hash||'').replace(/^#/,'');
+  var st={view:'home'};
+  if(h){ var p=h.split('/'); st={view:p[0]}; if(p[0]==='product') st.id=p[1]; if(p[0]==='legal') st.doc=p[1]; }
+  history.replaceState(st, '', location.hash || (location.pathname+location.search));
+  if(h) routeFromHash();
+})();
 </script>
 </body>
 </html>
