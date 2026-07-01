@@ -173,6 +173,16 @@
 
   /* ============ FEATURE / VALUE ============ */
   .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .pillar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pillar{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px 30px 26px;transition:transform .18s var(--ease),border-color .18s var(--ease)}
+  .pillar:hover{border-color:var(--line-2);transform:translateY(-3px)}
+  .pillar .pnum{font-family:var(--display);font-weight:700;font-size:30px}
+  .pillar h3{font-size:22px;margin:8px 0 10px}
+  .pillar p{color:var(--muted);font-size:15px;line-height:1.55}
+  .pillar .plink{margin-top:16px;display:inline-block;font-family:var(--mono);font-size:13.5px;color:var(--violet-2);cursor:pointer;transition:color .15s}
+  .pillar .plink:hover{color:var(--text)}
+  .pillar-wide{grid-column:1 / -1;display:grid;grid-template-columns:.8fr 1.5fr;gap:30px;align-items:center}
+  @media(max-width:760px){.pillar-grid{grid-template-columns:1fr}.pillar-wide{grid-template-columns:1fr;gap:8px}}
   .feat{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:var(--surface)}
   .feat .ico{font-size:22px;margin-bottom:13px}
   .feat h4{font-family:var(--display);font-size:16px;font-weight:600;margin-bottom:7px}
@@ -578,6 +588,28 @@
     .legal-nav h5{width:100%}
   }
   :focus-visible{outline:2px solid var(--violet);outline-offset:2px;border-radius:4px}
+  .panel-note{background:rgba(123,97,255,.08);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:16px}
+  .panel-note b{color:var(--text);font-weight:600}
+  .form-success{text-align:center;padding:24px 8px}
+  .form-success-ico{width:54px;height:54px;border-radius:50%;background:var(--grad);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .form-success h3{font-size:20px;margin-bottom:8px}
+  .form-success p{color:var(--muted);font-size:14px;line-height:1.55}
+  .enr-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:38px}
+  .enr-caption{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+  .reveal-bar{display:flex;justify-content:center;margin:20px 0 0}
+  .reveal-btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:13.5px;color:var(--text);background:var(--surface);border:1px solid var(--line-2);border-radius:30px;padding:12px 24px;cursor:pointer;transition:.18s var(--ease)}
+  .reveal-btn:hover{border-color:var(--violet);background:rgba(123,97,255,.08)}
+  .spot-grid.reveal-body,.bench-grid.reveal-body{display:none}
+  .spot-grid.reveal-body.open,.bench-grid.reveal-body.open{display:grid}
+  .enr-more{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
+  .enr-more summary{cursor:pointer;font-family:var(--mono);font-size:13px;color:var(--violet-2);list-style:none}
+  .enr-more summary::-webkit-details-marker{display:none}
+  .enr-more summary::before{content:"+ "}
+  .enr-more[open] summary::before{content:"– "}
+  .enr-more-body{display:flex;flex-direction:column;gap:9px;margin-top:13px;font-size:13.5px;color:var(--muted);line-height:1.5}
+  .enr-more-body b{color:var(--text)}
+  .enr-caption p{color:var(--muted);font-size:14.5px;margin:0}
+  @media(max-width:820px){.enr-benefits{grid-template-columns:1fr}}
   /* ============ ENRICHMENT PACK VIEWER ============ */
   .enr-asset{display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin-bottom:18px;font-family:var(--mono);font-size:12px;color:var(--muted-2)}
   .enr-asset b{color:var(--text);font-weight:500}
@@ -675,7 +707,7 @@
           </button>
         </div>
       </div>
-      <a class="btn btn-ghost btn-sm btn-cal" href="https://modelcore.zohobookings.com/" target="_blank" rel="noopener">Schedule a call</a>
+      <a class="btn btn-ghost btn-sm btn-cal" href="https://meetings.hubspot.com/PASTE_HUBSPOT_MEETING" target="_blank" rel="noopener">Schedule a call</a>
       <button class="btn btn-primary btn-sm" onclick="go('contact')">Request access</button>
       <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
     </div>
@@ -691,13 +723,13 @@
       <div>
         <span class="eyebrow">Training data, licensed &amp; sourced</span>
         <h1>The data layer for <span class="grad-text">frontier models.</span></h1>
-        <p class="lede">License rights-cleared, off-the-shelf datasets across speech, video, text, code and reasoning, or commission custom collection built to your exact spec. Compliant by design, delivered model-ready.</p>
+        <p class="lede">Rights-cleared training data across every modality. Licensed, enriched, and sourced. Compliant by design.</p>
         <div class="hero-cta">
           <button class="btn btn-primary" onclick="go('catalogue')">Browse the catalogue</button>
           <button class="btn btn-ghost" onclick="go('custom')">Commission collection</button>
         </div>
         <div class="hero-stats">
-          <div class="hstat"><div class="n">30+</div><div class="l">Off-the-shelf datasets</div></div>
+          <div class="hstat"><div class="n">70+</div><div class="l">Off-the-shelf datasets</div></div>
           <div class="hstat"><div class="n">220+</div><div class="l">Languages &amp; locales</div></div>
           <div class="hstat"><div class="n">100%</div><div class="l">Rights-cleared sourcing</div></div>
         </div>
@@ -761,12 +793,56 @@
     <div class="ticker" id="ticker"></div>
   </div>
 
+  <!-- FOUR PILLARS -->
+  <div class="wrap section" id="sec-pillars">
+    <div class="sec-head">
+      <span class="eyebrow">What we do</span>
+      <h2>Five ways we power frontier AI.</h2>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <div class="pnum grad-text">01</div>
+        <h3>Off-the-shelf datasets (OTS)</h3>
+        <p>70+ rights-cleared datasets. 8 modalities, 220+ languages.</p>
+        <a class="plink" onclick="go('catalogue')">Browse the catalogue →</a>
+      </div>
+      <div class="pillar">
+        <div class="pnum grad-text">02</div>
+        <h3>Custom data collection</h3>
+        <p>Our partner network collects data to your exact spec, anywhere, at any scale.</p>
+        <a class="plink" onclick="go('custom')">Commission collection →</a>
+      </div>
+      <div class="pillar">
+        <div class="pnum grad-text">03</div>
+        <h3>Data enrichment</h3>
+        <p>Raw content from any source becomes model-ready training data with 10+ JSON layers, plus customization.</p>
+        <a class="plink" onclick="go('services')">See how enrichment works →</a>
+      </div>
+      <div class="pillar">
+        <div class="pnum grad-text">04</div>
+        <h3>Data acquisition &amp; brokerage</h3>
+        <p>We acquire, license, and distribute data between owners and buyers.</p>
+        <a class="plink" onclick="go('contact')">Talk to our team →</a>
+      </div>
+      <div class="pillar pillar-wide">
+        <div>
+          <div class="pnum grad-text">05</div>
+          <h3>Data &amp; AI strategy</h3>
+        </div>
+        <div>
+          <p>Consulting for your data strategy, monetization roadmap, sourcing requirements, and where AI fits in your business.</p>
+          <a class="plink" onclick="go('contact')">Start a conversation →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- CATEGORIES -->
   <div class="wrap section">
     <div class="sec-head">
       <span class="eyebrow">The catalogue</span>
       <h2>Off-the-shelf datasets, ready to license.</h2>
-      <p>Seventy-one production datasets across eight modalities, each rights-cleared, documented, and benchmarked. Click a category to browse.</p>
+      <p>Fast, enriched, cleared for training. Browse by category.</p>
     </div>
     <div class="cat-grid" id="homeCats"></div>
   </div>
@@ -774,20 +850,22 @@
   <!-- SPOTLIGHT: POPULAR -->
   <div class="wrap section-tight">
     <div class="sec-head">
-      <span class="eyebrow">Most in demand ✦</span>
+      <span class="eyebrow">🔒 Behind the curtain</span>
       <h2>Datasets teams are licensing right now.</h2>
-      <p>The most-requested sets across modalities, production-ready, enriched, and benchmarked.</p>
+      <p>A live look at what frontier teams are training on this week.</p>
     </div>
-    <div class="spot-grid" id="spotGrid"></div>
+    <div class="reveal-bar" id="reveal-spot"><button class="reveal-btn" onclick="reveal('spot')"><span class="lock">👁</span> Reveal the list</button></div>
+    <div class="spot-grid reveal-body" id="spotGrid"></div>
   </div>
 
   <!-- SPOTLIGHT: BENCHMARK (PREMIUM) -->
   <div class="wrap section-tight">
     <div class="bench-spotlight">
-      <span class="eyebrow" style="color:var(--coral)">◆ Premium · benchmark suites</span>
+      <span class="eyebrow" style="color:var(--coral)">🔒 Access-restricted</span>
       <h2 style="margin:10px 0 8px">Evaluation data, contamination-controlled.</h2>
-      <p style="color:var(--muted);max-width:640px">Held-out, rubric-scored benchmark sets for trustworthy model evaluation, our most rigorous, access-restricted tier. Authored by experts, rotated to prevent leakage.</p>
-      <div class="bench-grid" id="benchGrid"></div>
+      <p style="color:var(--muted);max-width:640px">The held-out eval sets labs use to gate releases. Authored by experts, rotated to prevent leakage.</p>
+      <div class="reveal-bar" id="reveal-bench"><button class="reveal-btn" onclick="reveal('bench')"><span class="lock">👁</span> Take a peek</button></div>
+      <div class="bench-grid reveal-body" id="benchGrid"></div>
     </div>
   </div>
 
@@ -795,9 +873,10 @@
   <div class="wrap section" id="sec-enrichment">
     <div class="sec-head">
       <span class="eyebrow">Enrichment</span>
-      <h2>Every asset ships with a complete enrichment pack.</h2>
-      <p>Baseline data is only the start. Each asset arrives with a clean, structured pack of enrichment layers as JSON sidecars, plus a vocal isolation stem for speech. Below is a real pack from a 15 minute Arabic conversation. Read the highlights, or switch any layer to raw JSON to see exactly what ships.</p>
+      <h2>Every asset ships with the intelligence models train on.</h2>
+      <p>Save on compute, along with hundreds of hours of work from your producers and engineers.</p>
     </div>
+    <div class="enr-caption"><span class="eyebrow" style="margin-bottom:0">Live example</span><p>A real pack from a 15 minute Arabic conversation.</p></div>
     <div class="enr-asset">
       <span>Asset <b>ar-MISC-15m-002</b></span>
       <span>Language <b>Arabic (ar)</b></span>
@@ -831,6 +910,14 @@
       <span class="enr-mod"><b>Code:</b> AST, tests, traces, docs</span>
       <span class="enr-mod"><b>Robotics:</b> sensor sync, calibration, labels</span>
     </div>
+    <details class="enr-more">
+      <summary>More about the pack</summary>
+      <div class="enr-more-body">
+        <div><b>The labels models learn from.</b> Transcripts, speaker turns, sentiment, topics, summaries.</div>
+        <div><b>One schema, every modality.</b> Consistent JSON across speech, image, video, text, and code.</div>
+        <div><b>Trust on every second.</b> Quality metrics, human-versus-synthetic scores, and provenance.</div>
+      </div>
+    </details>
   </div>
 
   <!-- VALUE -->
@@ -840,10 +927,10 @@
       <h2>Built for buyers who can't take rights risk.</h2>
     </div>
     <div class="feat-grid">
-      <div class="feat"><div class="ico">⚖️</div><h4>Provenance you can defend</h4><p>Every record carries a documented chain of consent and license. Full audit trail on export.</p></div>
-      <div class="feat"><div class="ico">🎯</div><h4>Model-ready, not raw</h4><p>Cleaned, deduplicated, annotated and formatted to your training schema: JSONL, WebDataset, Parquet.</p></div>
-      <div class="feat"><div class="ico">🌐</div><h4>Depth + diversity</h4><p>Balanced across languages, demographics and domains to cut bias and broaden coverage.</p></div>
-      <div class="feat"><div class="ico">🔁</div><h4>Sample before you commit</h4><p>Pull a free representative sample and full datasheet before any licensing conversation.</p></div>
+      <div class="feat"><div class="ico">⚖️</div><h4>Provenance you can defend</h4><p>We stand behind every one of our assets.</p></div>
+      <div class="feat"><div class="ico">🎯</div><h4>Model-ready, not raw</h4><p>Cleaned, annotated, formatted to your schema.</p></div>
+      <div class="feat"><div class="ico">🌐</div><h4>Depth + diversity</h4><p>Balanced across languages, demographics, and domains.</p></div>
+      <div class="feat"><div class="ico">🔁</div><h4>Sample before you commit</h4><p>Free sample and datasheet before you commit.</p></div>
     </div>
   </div>
 
@@ -860,19 +947,19 @@
 
     <div class="split-panel active" id="panel-buy">
       <div class="step-list">
-        <div class="step"><div class="num">01</div><div><h4>Describe or browse</h4><p>Use AI search to describe what you need, or filter the catalogue by modality and language.</p></div></div>
-        <div class="step"><div class="num">02</div><div><h4>Sample &amp; evaluate</h4><p>Download a free representative sample with the full datasheet and performance docs.</p></div></div>
-        <div class="step"><div class="num">03</div><div><h4>License &amp; pay</h4><p>Agree terms, pay securely in-portal, and receive a signed license and audit trail.</p></div></div>
-        <div class="step"><div class="num">04</div><div><h4>Deliver model-ready</h4><p>Pull data via signed URLs or cloud bucket transfer in your preferred training format.</p></div></div>
+        <div class="step"><div class="num">01</div><div><h4>Browse data</h4></div></div>
+        <div class="step"><div class="num">02</div><div><h4>Sample &amp; evaluate</h4></div></div>
+        <div class="step"><div class="num">03</div><div><h4>Purchase License</h4></div></div>
+        <div class="step"><div class="num">04</div><div><h4>Start training</h4></div></div>
       </div>
       <div class="panel-card">
         <h3>For demand</h3>
-        <p style="color:var(--muted)">Frontier labs, Mag7 teams, and enterprise ML.</p>
+        <p style="color:var(--muted)">Frontier labs, Mag7 teams, enterprise ML.</p>
+        <div class="panel-note">🌐 <b>We supply your suppliers.</b> Buy from the original source, not a reseller.</div>
         <ul>
-          <li><span class="tick">✓</span><div><b>Pretraining &amp; fine-tuning corpora</b> at scale</div></li>
-          <li><span class="tick">✓</span><div><b>Evaluation &amp; RL data</b> with verifiable rewards</div></li>
-          <li><span class="tick">✓</span><div><b>Custom enrichment</b>, labeling, transcription, preference</div></li>
-          <li><span class="tick">✓</span><div><b>Exclusive &amp; non-exclusive</b> licensing options</div></li>
+          <li><span class="tick">✓</span><div>Pretraining &amp; fine-tuning corpora</div></li>
+          <li><span class="tick">✓</span><div>Evaluation &amp; RL data</div></li>
+          <li><span class="tick">✓</span><div>Exclusive &amp; non-exclusive licensing</div></li>
         </ul>
         <button class="btn btn-primary btn-block" onclick="openSignin('buyer')">Create buyer account</button>
       </div>
@@ -880,19 +967,18 @@
 
     <div class="split-panel" id="panel-sell">
       <div class="step-list">
-        <div class="step"><div class="num">01</div><div><h4>Submit your catalogue</h4><p>Tell us what you hold, audio, video, text, imagery, and the rights you control.</p></div></div>
-        <div class="step"><div class="num">02</div><div><h4>We enrich &amp; package</h4><p>We clean, annotate and structure your content into a licensable, model-ready product.</p></div></div>
-        <div class="step"><div class="num">03</div><div><h4>List or license directly</h4><p>Go into the catalogue or sell privately to named buyers, you set the terms.</p></div></div>
-        <div class="step"><div class="num">04</div><div><h4>Get paid on usage</h4><p>Transparent revenue share, recurring payouts, and a full record of where data went.</p></div></div>
+        <div class="step"><div class="num">01</div><div><h4>Submit your catalogue details</h4></div></div>
+        <div class="step"><div class="num">02</div><div><h4>We enrich &amp; package</h4></div></div>
+        <div class="step"><div class="num">03</div><div><h4>List or license</h4></div></div>
+        <div class="step"><div class="num">04</div><div><h4>Get paid</h4></div></div>
       </div>
       <div class="panel-card">
         <h3>For supply</h3>
-        <p style="color:var(--muted)">Publishers, rights holders, and creators.</p>
+        <p style="color:var(--muted)">Publishers, rights holders, creators.</p>
         <ul>
-          <li><span class="tick">✓</span><div><b>Monetize archives</b> without losing control</div></li>
-          <li><span class="tick">✓</span><div><b>Enrichment included</b>, we add the value that buyers pay for</div></li>
-          <li><span class="tick">✓</span><div><b>Consent &amp; rights tooling</b> built in</div></li>
-          <li><span class="tick">✓</span><div><b>Recurring revenue share</b> with usage transparency</div></li>
+          <li><span class="tick">✓</span><div>Monetize archives without losing control</div></li>
+          <li><span class="tick">✓</span><div>Enrichment included</div></li>
+          <li><span class="tick">✓</span><div>Recurring revenue share</div></li>
         </ul>
         <button class="btn btn-primary btn-block" onclick="openSignin('provider')">Create provider account</button>
       </div>
@@ -1061,32 +1147,26 @@
     <div class="section-tight" style="padding-bottom:0">
       <div class="sec-head"><span class="eyebrow">Get in touch</span><h2>Tell us what you need.</h2></div>
       <div class="form-card">
-        <form id="zohoLeadCustom" action="https://crm.zoho.com/crm/WebToLeadForm" name="WebToLeadsCustom" method="POST" accept-charset="UTF-8" onsubmit="return zohoValidate(this);">
-          <input type="hidden" name="xnQsjsdp" value="PASTE_ZOHO_FORM_TOKEN">
-          <input type="hidden" name="zc_gad" value="">
-          <input type="hidden" name="xmIwtLD" value="PASTE_ZOHO_FORM_ID">
-          <input type="hidden" name="actionType" value="TGVhZHM=">
-          <input type="hidden" name="returnURL" value="https://www.modelcore.io/thank-you">
-          <input type="hidden" name="LEADCF1" value="Custom collection">
+        <form id="hsLeadCustom" onsubmit="return hsSubmit(event,'custom')">
           <div class="field-row">
-            <div class="field"><label>Name</label><input type="text" name="Last Name" maxlength="80" placeholder="Your name" required></div>
-            <div class="field"><label>Work email</label><input type="email" name="Email" maxlength="100" placeholder="you@company.com" required></div>
+            <div class="field"><label>Name</label><input type="text" data-hs="name" maxlength="80" placeholder="Your name" required></div>
+            <div class="field"><label>Work email</label><input type="email" data-hs="email" maxlength="100" placeholder="you@company.com" required></div>
           </div>
-          <div class="field"><label>Company</label><input type="text" name="Company" maxlength="100" placeholder="Company name"></div>
+          <div class="field"><label>Company</label><input type="text" data-hs="company" maxlength="100" placeholder="Company name"></div>
           <div class="field-row">
             <div class="field"><label>Modality</label>
-              <select name="LEADCF2"><option>Speech / audio</option><option>Images / vision</option><option>Video / multimodal</option><option>Text / documents</option><option>Code</option><option>Reasoning / preference</option><option>Robotics / sensor</option><option>Other / mixed</option></select>
+              <select data-hs="modality"><option>Speech / audio</option><option>Images / vision</option><option>Video / multimodal</option><option>Text / documents</option><option>Code</option><option>Reasoning / preference</option><option>Robotics / sensor</option><option>Other / mixed</option></select>
             </div>
             <div class="field"><label>Target scale</label>
-              <select name="LEADCF3"><option>Pilot (&lt; 1k units)</option><option>Mid (1k–100k units)</option><option>Large (100k–1M units)</option><option>Frontier (1M+ units)</option></select>
+              <select data-hs="scale"><option>Pilot (&lt; 1k units)</option><option>Mid (1k–100k units)</option><option>Large (100k–1M units)</option><option>Frontier (1M+ units)</option></select>
             </div>
           </div>
-          <div class="field"><label>Describe the dataset</label><textarea name="Description" placeholder="Languages, domains, annotation schema, quality bar, timeline, rights model…"></textarea></div>
+          <div class="field"><label>Describe the dataset</label><textarea data-hs="message" placeholder="Languages, domains, annotation schema, quality bar, timeline, rights model…"></textarea></div>
           <button type="submit" class="btn btn-primary btn-block">Submit request</button>
-          <p class="form-note">Submits securely to ModelCore's Zoho CRM. Add your Zoho form token/ID to activate.</p>
+          <p class="form-note">Submits securely to ModelCore's HubSpot CRM. Add your HubSpot portal and form IDs to activate.</p>
         </form>
         <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-          <a class="btn btn-ghost btn-sm btn-cal" href="https://modelcore.zohobookings.com/" target="_blank" rel="noopener">Schedule a call</a>
+          <a class="btn btn-ghost btn-sm btn-cal" href="https://meetings.hubspot.com/PASTE_HUBSPOT_MEETING" target="_blank" rel="noopener">Schedule a call</a>
           <a class="btn btn-ghost btn-sm" href="mailto:hello@modelcore.io">Email us</a>
         </div>
       </div>
@@ -1222,23 +1302,21 @@
     <div class="sec-head">
       <span class="eyebrow">Contact</span>
       <h2>Let's talk data.</h2>
-      <p>Tell us whether you're looking to license, supply, or commission, and we'll route you to the right person. Prefer to talk live? <a href="https://modelcore.zohobookings.com/" target="_blank" rel="noopener" style="color:var(--violet-2)">Schedule a call →</a></p>
+      <p>Tell us whether you're looking to license, supply, or commission, and we'll route you to the right person. Prefer to talk live? <a href="https://meetings.hubspot.com/PASTE_HUBSPOT_MEETING" target="_blank" rel="noopener" style="color:var(--violet-2)">Schedule a call →</a></p>
     </div>
     <div class="form-card">
-      <!-- ZOHO CRM WEB-TO-LEAD FORM
-           1. In Zoho CRM: Setup → Developer Space → Webforms (Leads), or Leads → Web-to-Lead Form.
-           2. Build a Leads form, then copy the generated form-action URL and hidden field values.
-           3. Replace the PASTE_ZOHO_* placeholders below with your form's real token/IDs.
-           4. Point returnURL at your own thank-you page. -->
-      <form id="zohoLead" action="https://crm.zoho.com/crm/WebToLeadForm" name="WebToLeads" method="POST" accept-charset="UTF-8" onsubmit="return zohoValidate();">
-        <input type="hidden" name="xnQsjsdp" value="PASTE_ZOHO_FORM_TOKEN">
-        <input type="hidden" name="zc_gad" value="">
-        <input type="hidden" name="xmIwtLD" value="PASTE_ZOHO_FORM_ID">
-        <input type="hidden" name="actionType" value="TGVhZHM=">
-        <input type="hidden" name="returnURL" value="https://www.modelcore.io/thank-you">
+      <!-- HUBSPOT FORM (custom UI, posts to HubSpot Forms API)
+           1. In HubSpot: Marketing > Forms > create a form (or use an existing one).
+           2. Copy your Portal ID (Hub ID) and the Form ID (GUID).
+           3. Paste them into HUBSPOT_PORTAL_ID and HUBSPOT_FORMS in the script below.
+           4. This posts to api.hsforms.com using standard contact properties
+              (email, firstname, lastname, company, message); dropdown answers are
+              folded into the message. To capture them as their own fields, create
+              custom HubSpot properties and add them to fields[] in hsSubmit(). -->
+      <form id="hsLead" onsubmit="return hsSubmit(event,'main')">
         <div class="field">
           <label>I am a…</label>
-          <select name="LEADCF1" id="contactRole">
+          <select data-hs="role">
             <option>Data buyer (lab / enterprise)</option>
             <option>Data provider (publisher / rights holder / creator)</option>
             <option>Exploring custom collection</option>
@@ -1246,17 +1324,17 @@
           </select>
         </div>
         <div class="field-row">
-          <div class="field"><label>Name</label><input type="text" name="Last Name" maxlength="80" placeholder="Your name" required></div>
-          <div class="field"><label>Work email</label><input type="email" name="Email" maxlength="100" placeholder="you@company.com" required></div>
+          <div class="field"><label>Name</label><input type="text" data-hs="name" maxlength="80" placeholder="Your name" required></div>
+          <div class="field"><label>Work email</label><input type="email" data-hs="email" maxlength="100" placeholder="you@company.com" required></div>
         </div>
-        <div class="field"><label>Company</label><input type="text" name="Company" maxlength="100" placeholder="Company name"></div>
-        <div class="field"><label>How can we help?</label><textarea name="Description" placeholder="Tell us what you're trying to do…"></textarea></div>
+        <div class="field"><label>Company</label><input type="text" data-hs="company" maxlength="100" placeholder="Company name"></div>
+        <div class="field"><label>How can we help?</label><textarea data-hs="message" placeholder="Tell us what you're trying to do…"></textarea></div>
         <button type="submit" class="btn btn-primary btn-block">Send message</button>
-        <p class="form-note">Submits securely to ModelCore's Zoho CRM. Add your Zoho form token/ID to activate (see code comment).</p>
+        <p class="form-note">Submits securely to ModelCore's HubSpot CRM. Add your HubSpot portal and form IDs to activate (see code comment).</p>
       </form>
       <div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--line);display:flex;gap:12px;align-items:center;flex-wrap:wrap">
         <span style="color:var(--muted);font-size:13.5px">Prefer to skip the form?</span>
-        <a class="btn btn-ghost btn-sm btn-cal" href="https://modelcore.zohobookings.com/" target="_blank" rel="noopener">Schedule a call</a>
+        <a class="btn btn-ghost btn-sm btn-cal" href="https://meetings.hubspot.com/PASTE_HUBSPOT_MEETING" target="_blank" rel="noopener">Schedule a call</a>
         <a class="btn btn-ghost btn-sm" href="mailto:hello@modelcore.io">Email us</a>
       </div>
     </div>
@@ -1267,63 +1345,74 @@
 <section class="view" id="view-services">
   <div class="wrap section">
     <div class="sec-head">
-      <span class="eyebrow">Services</span>
-      <h2>Beyond the catalogue: we build, enrich, verify, and detect.</h2>
-      <p>Off-the-shelf data is the start. When you need data that doesn't exist yet, or labels, quality, and trust on top of data you already hold, these are the services teams come to us for. No deal is too large or too small, and we source from all over the world.</p>
+      <span class="eyebrow">What we do</span>
+      <h2>Five pillars, one data partner.</h2>
+      <p>The full data lifecycle, one partner.</p>
     </div>
     <div class="svc-grid">
       <div class="svc-card">
-        <div class="svc-ico">🛰️</div>
-        <h3>Custom collection &amp; sourcing</h3>
-        <p>We design and run bespoke data collection to your exact spec, any language, domain, modality, demographic, or annotation schema, sourced ethically from around the world.</p>
+        <div class="svc-ico">📦</div>
+        <h3>Off-the-shelf datasets (OTS)</h3>
+        <p>Rights-cleared datasets, ready to license in your format.</p>
         <ul>
-          <li><span class="tick">✓</span><div>Global collection network with consent &amp; rights tooling</div></li>
-          <li><span class="tick">✓</span><div>Audio, image, video, text, code &amp; sensor capture</div></li>
-          <li><span class="tick">✓</span><div>Your schema and formats, delivered via S3 / cloud storage</div></li>
+          <li><span class="tick">✓</span><div>70+ datasets, with a free sample and datasheet before you commit</div></li>
+          <li><span class="tick">✓</span><div>Delivered as JSONL, WebDataset or Parquet via S3 / cloud storage</div></li>
+          <li><span class="tick">✓</span><div>Signed license and full audit trail on every set</div></li>
+        </ul>
+        <button class="btn btn-ghost btn-sm" onclick="go('catalogue')">Browse the catalogue →</button>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">🛰️</div>
+        <h3>Custom data collection</h3>
+        <p>Our partner network collects data to your exact spec, cleared for use.</p>
+        <ul>
+          <li><span class="tick">✓</span><div>Partner network across languages, regions &amp; demographics</div></li>
+          <li><span class="tick">✓</span><div>Audio, image, video, text, code &amp; sensor capture to your schema</div></li>
+          <li><span class="tick">✓</span><div>Consent &amp; rights tooling built in, delivered via S3 / cloud</div></li>
         </ul>
         <button class="btn btn-ghost btn-sm" onclick="go('custom')">See custom collection →</button>
       </div>
       <div class="svc-card">
         <div class="svc-ico">✦</div>
         <h3>Data enrichment</h3>
-        <p>Turn raw content into model-ready training data. Our enrichment stack, a council of leading models plus expert reviewers, adds the labels buyers actually train on.</p>
+        <p>Raw content becomes model-ready training data, with the labels buyers train on.</p>
         <ul>
           <li><span class="tick">✓</span><div>Transcription, diarization, captioning, boxes, masks &amp; preferences</div></li>
-          <li><span class="tick">✓</span><div>Multi-model ensemble labeling for accuracy and coverage</div></li>
+          <li><span class="tick">✓</span><div>Optional human verification and synthetic-content detection</div></li>
           <li><span class="tick">✓</span><div>Attached as JSON / JSONL sidecars on every record</div></li>
         </ul>
         <button class="btn btn-ghost btn-sm" onclick="go('contact')">Discuss enrichment →</button>
       </div>
       <div class="svc-card">
-        <div class="svc-ico">✅</div>
-        <h3>Human verification of data</h3>
-        <p>Gold-standard quality on demand. Credentialed reviewers verify and correct machine labels to produce human-verified data you can trust for evaluation and high-stakes training.</p>
+        <div class="svc-ico">🔁</div>
+        <h3>Data acquisition &amp; brokerage</h3>
+        <p>We acquire, license, and distribute data between owners and buyers.</p>
         <ul>
-          <li><span class="tick">✓</span><div>Multi-pass review with measured inter-rater agreement</div></li>
-          <li><span class="tick">✓</span><div>Domain experts for medical, legal, financial &amp; code</div></li>
-          <li><span class="tick">✓</span><div>Human-verified audio from $1.20/min ($72/hr)</div></li>
+          <li><span class="tick">✓</span><div>Acquire, license, and relicense across every modality</div></li>
+          <li><span class="tick">✓</span><div>Exclusive &amp; non-exclusive deals, any size</div></li>
+          <li><span class="tick">✓</span><div>Rights, consent &amp; audit trail on every transaction</div></li>
         </ul>
-        <button class="btn btn-ghost btn-sm" onclick="go('contact')">Request verification →</button>
+        <button class="btn btn-ghost btn-sm" onclick="go('contact')">Talk to our team →</button>
       </div>
       <div class="svc-card">
-        <div class="svc-ico">🛡️</div>
-        <h3>AI detection</h3>
-        <p>Know what's machine-generated. We detect AI-generated and synthetic content across data, published content, and business operations, keeping training sets clean and decisions trustworthy.</p>
+        <div class="svc-ico">🧭</div>
+        <h3>Data &amp; AI strategy</h3>
+        <p>Data strategy, sourcing and evaluation, and where AI fits.</p>
         <ul>
-          <li><span class="tick">✓</span><div>Synthetic-content screening for training corpora</div></li>
-          <li><span class="tick">✓</span><div>Detection across text, image, audio &amp; video</div></li>
-          <li><span class="tick">✓</span><div>Workflow integration for content &amp; operations pipelines</div></li>
+          <li><span class="tick">✓</span><div>Data strategy &amp; sourcing roadmaps</div></li>
+          <li><span class="tick">✓</span><div>Evaluation &amp; benchmark design</div></li>
+          <li><span class="tick">✓</span><div>AI opportunity assessments for your operations</div></li>
         </ul>
-        <button class="btn btn-ghost btn-sm" onclick="go('contact')">Talk about detection →</button>
+        <button class="btn btn-ghost btn-sm" onclick="go('contact')">Start a conversation →</button>
       </div>
     </div>
     <div class="cta-band" style="margin-top:34px">
-      <span class="eyebrow" style="justify-content:center">Off-the-shelf, too</span>
-      <h2>Already-built datasets, ready to license.</h2>
-      <p>Browse 71 production datasets across eight modalities, each rights-cleared, enriched, and benchmarked.</p>
+      <span class="eyebrow" style="justify-content:center">Not sure where to start?</span>
+      <h2>Tell us the problem. We will point you to the right pillar.</h2>
+      <p>From a single dataset to a full data and AI strategy, we will route you to the right team.</p>
       <div class="hero-cta">
-        <button class="btn btn-primary" onclick="go('catalogue')">Browse the catalogue</button>
-        <a class="btn btn-ghost btn-cal" href="https://modelcore.zohobookings.com/" target="_blank" rel="noopener">Schedule a call</a>
+        <button class="btn btn-primary" onclick="go('contact')">Talk to our team</button>
+        <a class="btn btn-ghost btn-cal" href="https://meetings.hubspot.com/PASTE_HUBSPOT_MEETING" target="_blank" rel="noopener">Schedule a call</a>
       </div>
     </div>
   </div>
@@ -1410,7 +1499,7 @@
         <a onclick="go('faq')">FAQ</a>
         <a onclick="go('contact')">Contact</a>
         <a onclick="go('careers')">Careers</a>
-        <a href="https://modelcore.zohobookings.com/" target="_blank" rel="noopener">Schedule a call</a>
+        <a href="https://meetings.hubspot.com/PASTE_HUBSPOT_MEETING" target="_blank" rel="noopener">Schedule a call</a>
       </div>
       <div class="foot-col">
         <h5>Legal</h5>
@@ -1681,12 +1770,54 @@ function pricingBlock(p){
     <div class="ph-note">${m.foot}</div>`;
 }
 function copyId(e,id){ e.stopPropagation(); try{ navigator.clipboard.writeText(id); }catch(_){ } toast('Dataset ID copied · '+id); }
-function zohoValidate(f){
-  f = f || document.getElementById('zohoLead'); if(!f) return true;
-  var ln=f.querySelector('[name="Last Name"]'), em=f.querySelector('[name="Email"]');
-  if(ln && !ln.value.trim()){ toast('Please enter your name'); ln.focus(); return false; }
-  if(em){ var v=em.value.trim(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ toast('Please enter a valid work email'); em.focus(); return false; } }
-  return true;
+/* ============================================================
+   HUBSPOT FORMS  (custom UI, posts to HubSpot Forms API)
+   Paste your IDs below. Portal ID = Hub ID; Form ID = form GUID.
+   EU data-residency portals: change api.hsforms.com to api-eu1.hsforms.com.
+   ============================================================ */
+const HUBSPOT_PORTAL_ID = 'PASTE_HUBSPOT_PORTAL_ID';
+const HUBSPOT_FORMS = { main: 'PASTE_HUBSPOT_FORM_ID', custom: 'PASTE_HUBSPOT_FORM_ID_CUSTOM' };
+const HUBSPOT_API = 'https://api.hsforms.com/submissions/v3/integration/submit';
+function hsField(name, value){ return { name: name, value: value }; }
+function splitName(full){ full=(full||'').trim(); if(!full) return ['','']; var i=full.indexOf(' '); return i<0?[full,'']:[full.slice(0,i),full.slice(i+1).trim()]; }
+async function hsSubmit(ev, kind){
+  ev.preventDefault();
+  var f = ev.target;
+  var get = function(sel){ var el=f.querySelector(sel); return el ? el.value.trim() : ''; };
+  var name = get('[data-hs="name"]'), email = get('[data-hs="email"]');
+  if(!name){ toast('Please enter your name'); return false; }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ toast('Please enter a valid work email'); return false; }
+  var company = get('[data-hs="company"]'), desc = get('[data-hs="message"]'), msg = desc;
+  if(kind==='main'){ msg = 'Inquiry type: '+get('[data-hs="role"]')+'\n\n'+desc; }
+  else { msg = 'Custom collection request\nModality: '+get('[data-hs="modality"]')+'\nTarget scale: '+get('[data-hs="scale"]')+'\n\n'+desc; }
+  var nm = splitName(name);
+  var fields = [ hsField('email', email), hsField('firstname', nm[0]) ];
+  if(nm[1]) fields.push(hsField('lastname', nm[1]));
+  if(company) fields.push(hsField('company', company));
+  if(msg.trim()) fields.push(hsField('message', msg));
+  var portal = HUBSPOT_PORTAL_ID, formId = HUBSPOT_FORMS[kind];
+  if(portal.indexOf('PASTE_')===0 || !formId || formId.indexOf('PASTE_')===0){
+    toast('Form not connected yet: add your HubSpot portal and form IDs.'); return false;
+  }
+  var btn = f.querySelector('button[type=submit]');
+  if(btn){ btn.disabled=true; btn.dataset.label=btn.textContent; btn.textContent='Sending…'; }
+  try{
+    var res = await fetch(HUBSPOT_API+'/'+portal+'/'+formId, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: document.title } })
+    });
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    hsSuccess(f);
+  }catch(err){
+    if(btn){ btn.disabled=false; btn.textContent=btn.dataset.label||'Send'; }
+    toast('Something went wrong. Please email hello@modelcore.io');
+  }
+  return false;
+}
+function hsSuccess(f){
+  f.innerHTML = '<div class="form-success"><div class="form-success-ico">✓</div>'+
+    '<h3>Thanks, we have it.</h3>'+
+    '<p>Our team will be in touch within one business day. For anything urgent, email <a href="mailto:hello@modelcore.io">hello@modelcore.io</a>.</p></div>';
 }
 let currentProduct = null;
 
@@ -1942,6 +2073,12 @@ const UC_ICONS=[
 ];
 function useCaseIcon(text){ for(const pair of UC_ICONS){ if(pair[0].test(text)) return pair[1]; } return '\u25B8'; }
 
+function reveal(key){
+  var grid=document.getElementById(key==='spot'?'spotGrid':'benchGrid');
+  var bar=document.getElementById('reveal-'+key);
+  if(grid) grid.classList.add('open');
+  if(bar) bar.style.display='none';
+}
 function renderSpotlight(){
   const pop = PRODUCTS.filter(p=>p.popular).slice(0,6);
   const sg=document.getElementById('spotGrid');
