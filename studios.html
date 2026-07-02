@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ModelCore Studios | License, enrich & monetize your content</title>
+<meta name="description" content="Studios, publishers, and rights holders: license your content to frontier AI, enrich it into model-ready data, get data strategy consulting, and power your production workflows with live AI tooling.">
+<meta property="og:title" content="License your content for frontier AI | ModelCore Studios">
+<meta property="og:description" content="Turn your library into an AI asset. License, enrich, and monetize your content on your terms, and power production with AI tooling.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=\'http://www.w3.org/2000/svg\'%20viewBox=\'0%200%2032%2032\'%3E%3Cdefs%3E%3ClinearGradient%20id=\'g\'%20x1=\'0\'%20y1=\'0\'%20x2=\'1\'%20y2=\'1\'%3E%3Cstop%20offset=\'0\'%20stop-color=\'%237B61FF\'/%3E%3Cstop%20offset=\'.5\'%20stop-color=\'%23B14FF0\'/%3E%3Cstop%20offset=\'1\'%20stop-color=\'%23FF6A45\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width=\'32\'%20height=\'32\'%20rx=\'8\'%20fill=\'%230F0F18\'/%3E%3Crect%20x=\'6\'%20y=\'6\'%20width=\'20\'%20height=\'20\'%20rx=\'5\'%20fill=\'none\'%20stroke=\'url(%23g)\'%20stroke-width=\'2\'/%3E%3Crect%20x=\'11\'%20y=\'11\'%20width=\'10\'%20height=\'10\'%20rx=\'3\'%20fill=\'url(%23g)\'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#07070B; --ink-2:#0B0B12; --surface:#0F0F18; --surface-2:#14141F;
+    --violet:#7B61FF; --violet-2:#B3A1FF; --magenta:#B14FF0; --coral:#FF6A45; --teal:#46E5C8;
+    --grad:linear-gradient(100deg,#7B61FF,#B14FF0,#FF6A45);
+    --text:#F4F4F8; --muted:#9696AC; --muted-2:#6E6E86;
+    --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+    --radius:16px; --radius-lg:22px; --mono:'JetBrains Mono',ui-monospace,monospace;
+    --wrap:1120px; --ease:cubic-bezier(.4,0,.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--ink-2);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.1;letter-spacing:-.02em}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-2);display:inline-block;margin-bottom:16px}
+  .section{padding:96px 0}
+  .section h2{font-size:clamp(28px,4vw,42px);font-weight:600;max-width:760px}
+  .lead{color:var(--muted);font-size:18px;max-width:680px;margin-top:18px}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 22px;border-radius:12px;border:1px solid transparent;cursor:pointer;transition:.18s var(--ease)}
+  .btn-primary{background:var(--grad);color:#fff;background-size:140% 140%}
+  .btn-primary:hover{background-position:100% 0;transform:translateY(-1px)}
+  .btn-ghost{background:rgba(255,255,255,.03);border-color:var(--line-2);color:var(--text)}
+  .btn-ghost:hover{background:rgba(255,255,255,.07)}
+  .btn-block{width:100%;justify-content:center;font-size:16px;padding:15px}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(11,11,18,.72);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand-mark{width:30px;height:30px;filter:drop-shadow(0 0 10px rgba(123,97,255,.4))}
+  .brand-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:.05em}
+  .brand-sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:6px;padding:2px 7px;margin-left:3px}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .nav-link{color:var(--muted);font-size:14px;font-family:var(--mono)}
+  .nav-link:hover{color:var(--text)}
+  @media(max-width:640px){.nav-link{display:none}}
+
+  /* hero */
+  .hero{position:relative;padding:92px 0 60px;text-align:center;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(closest-side,rgba(123,97,255,.22),transparent 70%);pointer-events:none}
+  .hero::after{content:"";position:absolute;bottom:-40%;right:-10%;width:700px;height:600px;background:radial-gradient(closest-side,rgba(255,106,69,.12),transparent 70%);pointer-events:none}
+  .hero-inner{position:relative;z-index:1}
+  .hero h1{font-size:clamp(34px,6vw,62px);font-weight:700;max-width:900px;margin:0 auto}
+  .hero h1 .grad-text{display:inline}
+  .hero .lead{margin:22px auto 0;font-size:clamp(17px,2.2vw,20px)}
+  .hero-cta{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+
+  /* ticker */
+  .ticker{margin-top:56px;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .ticker-track{display:flex;gap:12px;width:max-content;animation:scroll 42s linear infinite}
+  .chip{font-family:var(--mono);font-size:13px;color:var(--muted);border:1px solid var(--line);background:var(--surface);border-radius:30px;padding:9px 16px;white-space:nowrap}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* cards / grid */
+  .grid{display:grid;gap:18px;margin-top:44px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:860px){.g4{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}}
+  @media(max-width:560px){.g4{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px}
+  .card h3{font-size:20px;font-weight:600;margin-bottom:12px}
+  .card-ico{width:42px;height:42px;border-radius:11px;background:rgba(123,97,255,.12);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+  .taglist{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+  .tag{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:4px 10px}
+
+  /* numbered steps */
+  .steps{counter-reset:s;display:grid;gap:16px;margin-top:44px}
+  .step{display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px}
+  .step .n{counter-increment:s;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;width:44px;height:44px;border-radius:12px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center}
+  .step .n::before{content:counter(s)}
+  .step h3{font-size:18px;font-weight:600;margin-bottom:4px}
+  .step p{color:var(--muted);font-size:15px}
+
+  /* security chips */
+  .trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .trust span{font-family:var(--mono);font-size:12.5px;color:var(--muted);border:1px solid var(--line-2);border-radius:24px;padding:8px 14px;display:flex;align-items:center;gap:7px}
+  .trust span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal)}
+
+  /* compensation band */
+  .band{background:linear-gradient(120deg,rgba(123,97,255,.10),rgba(255,106,69,.07));border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:44px;text-align:center}
+  .band h2{margin:0 auto}
+  .band-points{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:26px}
+  .band-points div{font-size:14.5px;color:var(--text);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:12px 18px}
+
+  /* faq */
+  .faq{max-width:820px;margin:40px auto 0}
+  details{border-bottom:1px solid var(--line);padding:4px 0}
+  summary{cursor:pointer;list-style:none;padding:18px 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:var(--mono);color:var(--violet-2);font-size:20px;transition:.2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);font-size:15px;padding:0 0 20px}
+
+  /* form */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;margin-top:44px}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:32px}}
+  .form-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px;font-weight:500}
+  .field input,.field select,.field textarea{width:100%;background:var(--ink);border:1px solid var(--line-2);border-radius:11px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:15px;transition:.15s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--violet)}
+  .field textarea{min-height:110px;resize:vertical}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:480px){.field-row{grid-template-columns:1fr}}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  @media(max-width:480px){.checks{grid-template-columns:1fr}}
+  .check{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--muted);background:var(--ink);border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;cursor:pointer}
+  .check input{width:16px;height:16px;accent-color:var(--violet)}
+  .platgroup h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);margin:15px 0 9px}
+  .chipset{display:flex;flex-wrap:wrap;gap:8px}
+  .chip-opt{cursor:pointer}
+  .chip-opt input{position:absolute;opacity:0;width:0;height:0}
+  .chip-opt span{display:inline-block;font-size:13px;color:var(--muted);border:1px solid var(--line-2);border-radius:22px;padding:7px 13px;transition:.15s;user-select:none}
+  .chip-opt:hover span{border-color:var(--violet-2);color:var(--text)}
+  .chip-opt input:checked + span{background:rgba(123,97,255,.16);border-color:var(--violet);color:var(--text)}
+  .chip-opt input:focus-visible + span{outline:2px solid var(--violet-2);outline-offset:2px}
+  .form-note{font-size:12.5px;color:var(--muted-2);margin-top:12px;text-align:center}
+  .form-note a{color:var(--violet-2)}
+  .form-success{text-align:center;padding:26px 8px}
+  .form-success .ico{width:56px;height:56px;border-radius:50%;background:var(--grad);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+  .form-success h3{font-size:22px;margin-bottom:10px}
+  .form-success p{color:var(--muted);font-size:15px}
+  .why-list{display:grid;gap:18px}
+  .why-list .row{display:flex;gap:13px;align-items:flex-start}
+  .why-list .tick{color:var(--teal);flex:0 0 auto;font-weight:700;margin-top:1px}
+  .why-list b{display:block;margin-bottom:2px}
+  .why-list span{color:var(--muted);font-size:14.5px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:44px 0;margin-top:20px}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+  .foot-links{display:flex;gap:20px;font-size:14px;color:var(--muted);font-family:var(--mono)}
+  .foot-links a:hover{color:var(--text)}
+  .foot small{color:var(--muted-2);font-size:12.5px}
+
+  /* toast */
+  #toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface-2);border:1px solid var(--line-2);color:var(--text);padding:12px 20px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:100}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+  @media(max-width:860px){.g3{grid-template-columns:1fr}}
+  .lockup-sub{color:var(--muted);font-size:14px;margin-top:6px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="https://modelcore.io"><svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset=".5" stop-color="#B14FF0"/><stop offset="1" stop-color="#FF6A45"/></linearGradient></defs><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="url(#lg)" stroke-width="8.5"/><rect x="34" y="34" width="32" height="32" rx="10" fill="url(#lg)"/></svg><span class="brand-name">Model<span class="grad-text">Core</span></span><span class="brand-sub">Studios</span></a>
+    <div class="nav-right">
+      <a class="nav-link" href="https://labs.modelcore.io">For data buyers</a>
+      <a class="btn btn-primary" href="#contact">Talk to our team</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">For studios, publishers &amp; rights holders</span>
+    <h1>Your content library is training data for <span class="grad-text">frontier AI</span>.</h1>
+    <p class="lead">License it, enrich it, and monetize it, on your terms. Then use the same AI tooling to power your own production and publishing workflows.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact">Talk to our team →</a>
+      <a class="btn btn-ghost" href="#offerings">What we offer</a>
+    </div>
+    <div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <span class="eyebrow">Why now</span>
+  <h2>Frontier labs need licensed, high-quality content. You own it.</h2>
+  <p class="lead">Public data is running out and rights risk is rising. Labs will pay for content that is high quality, diverse, and cleanly licensed. If you hold a catalogue, it is one of the most valuable AI assets you have.</p>
+</section>
+
+<section class="section wrap" id="offerings" style="padding-top:0">
+  <span class="eyebrow">What we offer</span>
+  <h2>Four ways we turn your library into an asset.</h2>
+  <div class="grid g4">
+    <div class="card"><div class="card-ico">💰</div><h3>License &amp; monetize</h3><p>Turn your archive into recurring revenue. We license your content to frontier labs, exclusive or non-exclusive, and you keep ownership.</p></div>
+    <div class="card"><div class="card-ico">✦</div><h3>Enrichment as a service</h3><p>We structure and label your content into model-ready data, and hand cleaner metadata back to you for your own use.</p></div>
+    <div class="card"><div class="card-ico">🧭</div><h3>Data &amp; AI strategy</h3><p>Consulting on licensing, monetization, and commercialization: how to price, package, and protect your data, and where AI fits your business.</p></div>
+    <div class="card"><div class="card-ico">⚡</div><h3>Production workflow tooling</h3><p>A live product that generates titles, descriptions, tags, chapters, and highlights for your content, with custom integrations for your pipeline.</p></div>
+  </div>
+</section>
+
+<section class="section wrap" id="tooling" style="padding-top:0">
+  <span class="eyebrow">Live product</span>
+  <h2>Production tooling that pays for itself.</h2>
+  <p class="lead">The same enrichment engine that makes your content model-ready also supercharges your own workflows.</p>
+  <div class="grid g3">
+    <div class="card"><div class="card-ico">🏷️</div><h3>Auto titles &amp; descriptions</h3><p>Generate on-brand titles and descriptions for every asset in seconds.</p></div>
+    <div class="card"><div class="card-ico">🔖</div><h3>Smart tagging</h3><p>Consistent tags, topics, and categories across your entire catalogue.</p></div>
+    <div class="card"><div class="card-ico">🎬</div><h3>Chapters &amp; scenes</h3><p>Automatic chapter markers and scene detection for long-form content.</p></div>
+    <div class="card"><div class="card-ico">✂️</div><h3>Highlight &amp; clip extraction</h3><p>Surface the best moments and cut share-ready clips automatically.</p></div>
+    <div class="card"><div class="card-ico">💬</div><h3>Transcripts &amp; subtitles</h3><p>Transcription, subtitles, and translation across 220+ languages.</p></div>
+    <div class="card"><div class="card-ico">🔍</div><h3>Searchable archive</h3><p>Make your whole library searchable by what is actually in it.</p></div>
+  </div>
+  <p class="lockup-sub">Custom integrations available for studio-specific pipelines and your MAM / DAM systems.</p>
+</section>
+
+<section class="section wrap" style="padding-top:0">
+  <span class="eyebrow">Your rights</span>
+  <h2>You license. You never lose control.</h2>
+  <div class="grid g4">
+    <div class="card"><div class="card-ico">🗝️</div><h3>You keep ownership</h3><p style="color:var(--muted);font-size:14.5px">You license your content on defined terms. You are never selling it outright.</p></div>
+    <div class="card"><div class="card-ico">📜</div><h3>Consent &amp; provenance</h3><p style="color:var(--muted);font-size:14.5px">Every asset carries a documented chain of rights and provenance.</p></div>
+    <div class="card"><div class="card-ico">🧾</div><h3>Full audit trail</h3><p style="color:var(--muted);font-size:14.5px">See exactly where your content went and how it is used.</p></div>
+    <div class="card"><div class="card-ico">🚫</div><h3>Opt-out &amp; exclusions</h3><p style="color:var(--muted);font-size:14.5px">Define what is off limits up front, and pull content back on your terms.</p></div>
+  </div>
+</section>
+
+<section class="section wrap" style="padding-top:0">
+  <span class="eyebrow">How it works</span>
+  <h2>From catalogue to payout, we handle the work.</h2>
+  <div class="steps">
+    <div class="step"><div class="n"></div><div><h3>Talk to our team</h3><p>We review your catalogue and the rights you control, and estimate what it is worth.</p></div></div>
+    <div class="step"><div class="n"></div><div><h3>Audit &amp; package</h3><p>We assess what is clearable and enrich it into a licensable, model-ready product.</p></div></div>
+    <div class="step"><div class="n"></div><div><h3>License &amp; monetize</h3><p>Exclusive or non-exclusive deals with vetted buyers, on terms you set.</p></div></div>
+    <div class="step"><div class="n"></div><div><h3>Get paid</h3><p>Transparent revenue share with full usage transparency, paid on a recurring basis.</p></div></div>
+  </div>
+</section>
+
+<section class="section wrap" style="padding-top:0">
+  <div class="band">
+    <span class="eyebrow">Also for companies</span>
+    <h2 style="font-size:clamp(26px,3.6vw,38px)">Have business operations data?</h2>
+    <p style="max-width:560px;margin:14px auto 0;color:var(--muted)">Messaging, docs, CRM, code, and workflows are valuable training data too. We license and anonymize operational data from companies.</p>
+    <div class="hero-cta" style="justify-content:center;margin-top:22px">
+      <a class="btn btn-primary" href="business-operations-data.html">License operations data →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="contact" style="padding-top:0">
+  <div class="contact-grid">
+    <div>
+      <span class="eyebrow">Get started</span>
+      <h2>Tell us what you hold.</h2>
+      <p class="lead" style="margin-bottom:26px">Share a little about your catalogue and what you are exploring. Our content partnerships team reviews every inquiry and replies within one business day.</p>
+      <div class="why-list">
+        <div class="row"><span class="tick">✓</span><div><b>You keep ownership</b><span>License on your terms, with exclusions you define.</span></div></div>
+        <div class="row"><span class="tick">✓</span><div><b>Enrichment included</b><span>We add the value that buyers pay for, and hand metadata back to you.</span></div></div>
+        <div class="row"><span class="tick">✓</span><div><b>Recurring revenue</b><span>Transparent revenue share with full usage visibility.</span></div></div>
+      </div>
+    </div>
+    <div class="form-card">
+      <form id="studioForm" onsubmit="return submitStudio(event)">
+        <div class="field-row">
+          <div class="field"><label>Organization</label><input type="text" name="org" placeholder="Studio / publisher name" required></div>
+          <div class="field"><label>Website</label><input type="text" name="website" placeholder="yoursite.com"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Your name</label><input type="text" name="name" placeholder="Your name" required></div>
+          <div class="field"><label>Work email</label><input type="email" name="email" placeholder="you@yoursite.com" required></div>
+        </div>
+        <div class="field"><label>What do you hold?</label>
+          <div class="chipset">
+            <label class="chip-opt"><input type="checkbox" name="content" value="Film & TV"><span>Film &amp; TV</span></label>
+            <label class="chip-opt"><input type="checkbox" name="content" value="Music & audio"><span>Music &amp; audio</span></label>
+            <label class="chip-opt"><input type="checkbox" name="content" value="Publishing & text"><span>Publishing &amp; text</span></label>
+            <label class="chip-opt"><input type="checkbox" name="content" value="Podcasts"><span>Podcasts</span></label>
+            <label class="chip-opt"><input type="checkbox" name="content" value="News & media"><span>News &amp; media</span></label>
+            <label class="chip-opt"><input type="checkbox" name="content" value="Photography"><span>Photography</span></label>
+            <label class="chip-opt"><input type="checkbox" name="content" value="Video & UGC"><span>Video &amp; UGC</span></label>
+            <label class="chip-opt"><input type="checkbox" name="content" value="Archives"><span>Archives</span></label>
+          </div>
+        </div>
+        <div class="field"><label>Interested in</label>
+          <div class="chipset">
+            <label class="chip-opt"><input type="checkbox" name="interest" value="Licensing & monetization"><span>Licensing &amp; monetization</span></label>
+            <label class="chip-opt"><input type="checkbox" name="interest" value="Enrichment"><span>Enrichment</span></label>
+            <label class="chip-opt"><input type="checkbox" name="interest" value="Strategy & consulting"><span>Strategy &amp; consulting</span></label>
+            <label class="chip-opt"><input type="checkbox" name="interest" value="Production tooling"><span>Production tooling</span></label>
+          </div>
+        </div>
+        <div class="field"><label>Anything else?</label><textarea name="message" placeholder="Catalogue size, formats, rights, timeline, and goals."></textarea></div>
+        <button type="submit" class="btn btn-primary btn-block">Send inquiry</button>
+        <p class="form-note">Goes straight to our content partnerships team at <a href="mailto:content@modelcore.io">content@modelcore.io</a>.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="https://modelcore.io"><svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset=".5" stop-color="#B14FF0"/><stop offset="1" stop-color="#FF6A45"/></linearGradient></defs><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="url(#lg2)" stroke-width="8.5"/><rect x="34" y="34" width="32" height="32" rx="10" fill="url(#lg2)"/></svg><span class="brand-name">Model<span class="grad-text">Core</span></span><span class="brand-sub">Studios</span></a>
+      <small style="display:block;margin-top:10px">Strategic data layer for frontier AI.</small>
+    </div>
+    <div class="foot-links">
+      <a href="https://modelcore.io">modelcore.io</a>
+      <a href="https://labs.modelcore.io">For data buyers</a>
+      <a href="mailto:content@modelcore.io">content@modelcore.io</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:22px"><small style="color:var(--muted-2);font-size:12px">© 2026 ModelCore Data, Inc. All rights reserved.</small></div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  (function(){var items=["Film & TV","Music","Publishing","Podcasts","News & media","Photography","Video & UGC","Archives","Audiobooks","Live events"];
+    var t=document.getElementById('ticker');var h=items.map(function(x){return '<span class="chip">'+x+'</span>';}).join('');t.innerHTML=h+h;})();
+  var _tt;function toast(m){var el=document.getElementById('toast');el.textContent=m;el.classList.add('show');clearTimeout(_tt);_tt=setTimeout(function(){el.classList.remove('show');},3200);}
+  const WEB3FORMS_ACCESS_KEY='PASTE_WEB3FORMS_ACCESS_KEY';
+  const FORM_ENDPOINT='https://api.web3forms.com/submit';
+  async function submitStudio(ev){
+    ev.preventDefault();var f=ev.target;var val=function(s){var e=f.querySelector(s);return e?e.value.trim():'';};
+    var name=val('[name=name]'),email=val('[name=email]');
+    if(!name){toast('Please enter your name');return false;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){toast('Please enter a valid work email');return false;}
+    var content=[].slice.call(f.querySelectorAll('input[name=content]:checked')).map(function(c){return c.value;});
+    var interest=[].slice.call(f.querySelectorAll('input[name=interest]:checked')).map(function(c){return c.value;});
+    var org=val('[name=org]'),website=val('[name=website]'),message=val('[name=message]');
+    if(WEB3FORMS_ACCESS_KEY.indexOf('PASTE_')===0){
+      var body='Organization: '+org+'%0D%0AWebsite: '+website+'%0D%0AName: '+name+'%0D%0AEmail: '+email+'%0D%0AHolds: '+content.join(', ')+'%0D%0AInterested in: '+interest.join(', ')+'%0D%0A%0D%0A'+encodeURIComponent(message);
+      window.location.href='mailto:content@modelcore.io?subject='+encodeURIComponent('Content partnership inquiry, '+org)+'&body='+body;return false;
+    }
+    var payload={access_key:WEB3FORMS_ACCESS_KEY,subject:'New content partnership inquiry, '+org,from_name:name,email:email,organization:org,website:website,holds:content.join(', '),interested_in:interest.join(', '),message:message};
+    var btn=f.querySelector('button[type=submit]');if(btn){btn.disabled=true;btn.dataset.label=btn.textContent;btn.textContent='Sending…';}
+    try{var res=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)});var data=await res.json();
+      if(data&&data.success){f.innerHTML='<div class="form-success"><div class="ico">✓</div><h3>Thanks, we have it.</h3><p>Our content partnerships team will be in touch within one business day. For anything urgent, email <a href="mailto:content@modelcore.io" style="color:var(--violet-2)">content@modelcore.io</a>.</p></div>';}
+      else throw new Error('fail');
+    }catch(err){if(btn){btn.disabled=false;btn.textContent=btn.dataset.label||'Send inquiry';}toast('Something went wrong. Please email content@modelcore.io');}
+    return false;
+  }
+</script>
+</body>
+</html>
