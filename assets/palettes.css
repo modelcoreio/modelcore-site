@@ -1,0 +1,25 @@
+/* ModelCore palette options. Not loaded by default.
+   To switch: copy ONE block below to the end of assets/site.css. Animations pick up the new colors automatically. */
+
+/* ===== 2 · Duotone: blue for AI teams, coral for owners ===== */
+:root{--violet:#5B7CFF;--violet-2:#9DB0FF;--magenta:#9C7BFF;--coral:#FF6A45;--teal:#46E5C8;
+ --grad:linear-gradient(100deg,#5B7CFF,#FF6A45);--buy:#9DB0FF;--own:#FF8A6A;
+ --btn-bg:#F4F4F8;--btn-ink:#0A0A11;--viz-1:#5B7CFF;--viz-2:#9C7BFF;--viz-3:#FF6A45}
+
+/* ===== 3 · Graphite: teal signal, amber for owners ===== */
+:root{--bg:#0E1013;--surface:#15181D;--surface-2:#1B1F25;--ink:#0A0C0F;--violet:#2FD6B0;--violet-2:#7BE8CF;--magenta:#2FD6B0;--coral:#F5A524;--teal:#2FD6B0;
+ --grad:linear-gradient(100deg,#2FD6B0,#F5A524);--buy:#7BE8CF;--own:#F5B94F;--signal:#2FD6B0;
+ --btn-bg:#2FD6B0;--btn-ink:#06120F;--viz-1:#2FD6B0;--viz-2:#62B8E8;--viz-3:#F5A524;--viz-bg:#0A0C0F;--header-bg:rgba(14,16,19,.8);--header-bg-2:rgba(14,16,19,.95)}
+
+/* ===== 4 · Research light: cobalt and orange on white ===== */
+:root{--bg:#F6F7F9;--surface:#FFFFFF;--surface-2:#FFFFFF;--ink:#FFFFFF;--text:#0E1116;--muted:#555C69;--muted-2:#7A808C;
+ --line:rgba(14,17,22,.09);--line-2:rgba(14,17,22,.16);--violet:#2547F5;--violet-2:#2547F5;--magenta:#2547F5;--coral:#E4572E;--teal:#0E9F7E;
+ --grad:linear-gradient(100deg,#2547F5,#E4572E);--buy:#2547F5;--own:#D2491F;--signal:#19C49B;
+ --btn-bg:#2547F5;--btn-ink:#fff;--viz-1:#4F6BFF;--viz-2:#8E7CFF;--viz-3:#FF6A45;--viz-bg:#0E1116;--header-bg:rgba(246,247,249,.82);--header-bg-2:rgba(246,247,249,.96)}
+.hero::before{background:radial-gradient(closest-side,rgba(37,71,245,.10),transparent 70%)}
+.viz{border-color:transparent}
+.viz-head,.viz-foot{color:#9AA0AC;border-color:rgba(255,255,255,.08)}
+.viz-tabs button[aria-pressed="true"]{color:#fff}
+.btn-ghost{background:#fff}
+.path{background:#fff}
+::selection{background:rgba(37,71,245,.2)}

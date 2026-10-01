@@ -4,7 +4,7 @@
 <link rel="canonical" href="https://modelcore.io/datasets/">
 <meta http-equiv="refresh" content="0; url=/datasets/">
 <script>var h=location.hash.slice(1),p=h.split('/'),t='/datasets/';
-if(p[0]==='product'&&p[1])t='/datasets/'+p[1];
+if(p[0]==='product'&&p[1])t='/datasets/'+({spch:'audio',img:'images',vid:'video',txt:'text',code:'code',rsn:'reasoning',fb:'human-feedback',rob:'robotics'}[p[1].split('-')[0]]||'');
 else if(p[0]==='legal')t='/legal#'+(p[1]||'privacy');
 else if(p[0]==='catalogue')t='/datasets/';
 else if(p[0]==='custom'||p[0]==='services')t='/custom-collection';
