@@ -1,180 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ModelCore</title>
-<meta name="description" content="The strategic data layer for frontier AI. Choose your path.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%237B61FF'/%3E%3Cstop%20offset='.5'%20stop-color='%23B14FF0'/%3E%3Cstop%20offset='1'%20stop-color='%23FF6A45'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%230F0F18'/%3E%3Crect%20x='6'%20y='6'%20width='20'%20height='20'%20rx='5'%20fill='none'%20stroke='url(%23g)'%20stroke-width='0.7'/%3E%3Crect%20x='10'%20y='10'%20width='12'%20height='12'%20rx='3.5'%20fill='none'%20stroke='url(%23g)'%20stroke-width='3.4'/%3E%3Crect%20x='14.5'%20y='14.5'%20width='3'%20height='3'%20rx='1'%20fill='url(%23g)'/%3E%3C/svg%3E">
+<title>AI Training Data, Licensed &amp; Rights-Cleared | ModelCore</title>
+<meta name="description" content="License rights-cleared AI training data across speech, video, image, text, code, and robotics. Content owners: license your library to AI labs.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://modelcore.io/">
+<meta name="theme-color" content="#0A0A11">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ModelCore">
+<meta property="og:title" content="AI Training Data, Licensed &amp; Rights-Cleared | ModelCore">
+<meta property="og:description" content="License rights-cleared AI training data across speech, video, image, text, code, and robotics. Content owners: license your library to AI labs.">
+<meta property="og:url" content="https://modelcore.io/">
+<meta property="og:image" content="https://modelcore.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ModelCore: AI training data, licensed and sourced">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Training Data, Licensed &amp; Rights-Cleared | ModelCore">
+<meta name="twitter:description" content="License rights-cleared AI training data across speech, video, image, text, code, and robotics. Content owners: license your library to AI labs.">
+<meta name="twitter:image" content="https://modelcore.io/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#07070B; --violet:#7B61FF; --violet-2:#B3A1FF; --magenta:#B14FF0; --coral:#FF6A45; --teal:#46E5C8;
-    --grad:linear-gradient(100deg,#7B61FF,#B14FF0,#FF6A45);
-    --text:#F4F4F8; --muted:#9A9AB0; --muted-2:#6E6E86;
-    --line:rgba(255,255,255,.12); --mono:'JetBrains Mono',monospace; --ease:cubic-bezier(.4,0,.2,1);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%}
-  body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;overflow:hidden;position:relative}
-  body::before,body::after{content:"";position:fixed;border-radius:50%;filter:blur(90px);opacity:.55;z-index:0;pointer-events:none}
-  body::before{width:620px;height:620px;background:radial-gradient(circle,rgba(123,97,255,.4),transparent 70%);top:-180px;left:-120px;animation:drift1 20s ease-in-out infinite}
-  body::after{width:520px;height:520px;background:radial-gradient(circle,rgba(255,106,69,.32),transparent 70%);bottom:-180px;right:-120px;animation:drift2 24s ease-in-out infinite}
-  @keyframes drift1{50%{transform:translate(140px,90px)}}
-  @keyframes drift2{50%{transform:translate(-120px,-80px)}}
-  #bg{position:fixed;inset:0;z-index:1;pointer-events:none}
-
-  /* top brand */
-  .top{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:center;padding:26px}
-  .brand{display:flex;align-items:center;gap:10px;opacity:0;animation:fadeDown .9s .1s var(--ease) forwards}
-  .brand svg{width:26px;height:26px;filter:drop-shadow(0 0 10px rgba(123,97,255,.4))}
-  .brand-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.06em}
-  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-
-  /* chooser */
-  .chooser{position:relative;z-index:3;display:flex;height:100vh;height:100dvh}
-  .side{flex:1 1 0;position:relative;display:flex;align-items:center;justify-content:center;padding:40px;text-decoration:none;color:inherit;overflow:hidden;transition:flex-grow .55s var(--ease),opacity .45s var(--ease),background .45s var(--ease)}
-  .side::before{content:"";position:absolute;inset:0;z-index:0;opacity:.45;transition:opacity .4s var(--ease);pointer-events:none}
-  .side-a::before{background:radial-gradient(85% 90% at 0% 50%,rgba(123,97,255,.22),transparent 62%)}
-  .side-b::before{background:radial-gradient(85% 90% at 100% 50%,rgba(255,106,69,.20),transparent 62%)}
-  .chooser:hover .side:not(:hover){opacity:.45}
-  .side:hover{opacity:1;flex-grow:1.2}
-  .side:hover::before{opacity:1}
-  .side:focus-visible{outline:2px solid var(--violet-2);outline-offset:-6px}
-
-  .side-inner{position:relative;z-index:1;max-width:420px;text-align:center;opacity:0;transform:translateY(20px)}
-  .side-a .side-inner{animation:rise .9s .35s var(--ease) forwards}
-  .side-b .side-inner{animation:rise .9s .5s var(--ease) forwards}
-  .side-ico{width:60px;height:60px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;transition:.4s var(--ease)}
-  .side:hover .side-ico{transform:translateY(-4px);border-color:rgba(255,255,255,.25)}
-  .side-ico svg{width:30px;height:30px}
-  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:14px}
-  .side-a .kicker{color:var(--violet-2)} .side-b .kicker{color:var(--coral)}
-  .side h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,4.2vw,50px);line-height:1.05;letter-spacing:-.02em;margin-bottom:16px}
-  .side p{color:var(--muted);font-size:clamp(15px,1.5vw,17px);line-height:1.55;max-width:340px;margin:0 auto}
-  .side-cta{display:inline-flex;align-items:center;gap:9px;margin-top:30px;font-family:var(--mono);font-size:14px;color:var(--text);border:1px solid var(--line);border-radius:30px;padding:12px 22px;transition:.3s var(--ease)}
-  .side:hover .side-cta{border-color:transparent;background:var(--grad);background-size:140% 140%}
-  .side-cta .arrow{transition:transform .3s var(--ease)}
-  .side:hover .side-cta .arrow{transform:translateX(5px)}
-
-  /* center badge */
-  .divider{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;pointer-events:none}
-  .orb-core{position:relative;display:flex;align-items:center;justify-content:center}
-  .halo{position:absolute;width:104px;height:104px;border-radius:50%;background:conic-gradient(from 0deg,#7B61FF,#B14FF0,#FF6A45,#7B61FF);filter:blur(10px);opacity:.5;animation:spin 9s linear infinite}
-  .badge{position:relative;width:82px;height:82px;border-radius:50%;background:var(--ink);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:0 0 44px rgba(123,97,255,.4);animation:pulse 4s ease-in-out infinite}
-  .badge svg{width:40px;height:40px}
-  @media(max-width:760px){.divider{display:none}}
-
-  /* fineprint */
-  .fine{position:fixed;bottom:0;left:0;right:0;z-index:5;display:flex;justify-content:center;padding:24px}
-  .fine a{font-family:var(--mono);font-size:12.5px;color:var(--muted-2);text-decoration:none;transition:.2s;letter-spacing:.02em}
-  .fine a:hover{color:var(--text)}
-  .fine .em{color:var(--muted)}
-
-  .orb3d{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;perspective:820px;pointer-events:none}
-  .logo3d{position:relative;width:120px;height:120px;transform-style:preserve-3d;will-change:transform}
-  .ll{position:absolute;inset:0}
-  .ll svg{width:120px;height:120px;display:block}
-  @media(max-width:760px){.orb3d{display:none}}
-  @keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
-  @keyframes rise{to{opacity:1;transform:none}}
-  @keyframes pulse{50%{box-shadow:0 0 60px rgba(255,106,69,.5)}}
-  @keyframes spin{to{transform:rotate(360deg)}}
-
-  @media(max-width:760px){
-    body{overflow:auto}
-    .chooser{flex-direction:column;height:auto;min-height:100dvh}
-    .side{min-height:50vh;flex:none}
-    .chooser:hover .side{opacity:1}
-    .side:hover{flex-grow:0}
-    .top{position:absolute}
-  }
-  @media(prefers-reduced-motion:reduce){
-    body::before,body::after,.badge,.halo{animation:none}
-    .brand,.side-inner{animation:none;opacity:1;transform:none}
-  }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@600;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ModelCore","url":"https://modelcore.io/","logo":"https://modelcore.io/assets/logo-512.png","email":"hello@modelcore.io","description":"ModelCore licenses, enriches, and sources rights-cleared AI training data for frontier labs and enterprise AI teams.","contactPoint":[{"@type":"ContactPoint","contactType":"sales","email":"data@modelcore.io"},{"@type":"ContactPoint","contactType":"partnerships","email":"content@modelcore.io"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"ModelCore","url":"https://modelcore.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do I get when I license a dataset?","acceptedAnswer":{"@type":"Answer","text":"The source files (audio, image, video, text, code, or sensor data), cleaned, deduplicated, and consistently formatted, plus enrichment as JSON and JSONL sidecars: transcripts, speaker labels, captions, boxes, masks, or preferences depending on the modality. Every delivery includes a datasheet and the documentation behind the rights."}},{"@type":"Question","name":"Can I see a sample before committing?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every dataset page has a sample request. We send a representative slice and the datasheet so you can evaluate fit before any licensing conversation."}},{"@type":"Question","name":"What does rights-cleared mean?","acceptedAnswer":{"@type":"Answer","text":"Each record carries documented consent and a license chain we can show you. You receive an audit trail tying the data to its source and rights basis, so your legal team can defend its use."}},{"@type":"Question","name":"What if the data I need isn't in the catalogue?","acceptedAnswer":{"@type":"Answer","text":"We collect it. Share a spec covering language, domain, modality, annotation schema, and volume, and our sourcing network and enrichment pipeline build it to order."}},{"@type":"Question","name":"How is data delivered?","acceptedAnswer":{"@type":"Answer","text":"As JSON and JSONL alongside the raw media, with WebDataset or Parquet on request. We deliver to AWS S3, Google Cloud Storage, Azure, or your own bucket."}},{"@type":"Question","name":"Do you offer exclusive licenses?","acceptedAnswer":{"@type":"Answer","text":"Many datasets are available both non-exclusively and exclusively. Exclusive and first-look deals are scoped case by case."}},{"@type":"Question","name":"I own a content library. How do I get paid for it?","acceptedAnswer":{"@type":"Answer","text":"Tell us what you hold. We review the rights you control, enrich the content into a licensable product, and license it to vetted AI buyers on terms you set. You keep ownership and earn recurring revenue."}},{"@type":"Question","name":"How do you handle privacy and personal data?","acceptedAnswer":{"@type":"Answer","text":"Collection follows documented consent, and we screen and redact personal information appropriately for each modality. Details are in each dataset's datasheet and our Privacy Policy and Data Processing Addendum."}}]}</script>
 </head>
 <body>
-<canvas id="bg"></canvas>
-
-<div class="top">
-  <div class="brand">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset=".5" stop-color="#B14FF0"/><stop offset="1" stop-color="#FF6A45"/></linearGradient></defs><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="url(#bg1)" stroke-width="2.5"/><rect x="30" y="30" width="40" height="40" rx="13" fill="none" stroke="url(#bg1)" stroke-width="13"/><rect x="44" y="44" width="12" height="12" rx="4.5" fill="url(#bg1)"/></svg>
-    <span class="brand-name">Model<span class="grad-text">Core</span></span>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="ModelCore home"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="lgh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset=".5" stop-color="#B14FF0"/><stop offset="1" stop-color="#FF6A45"/></linearGradient></defs><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="url(#lgh)" stroke-width="3"/><rect x="30" y="30" width="40" height="40" rx="13" fill="none" stroke="url(#lgh)" stroke-width="13"/><rect x="44" y="44" width="12" height="12" rx="4.5" fill="url(#lgh)"/></svg><span>Model<span class="grad-text">Core</span></span></a>
+    <nav aria-label="Main"><ul class="nav-links" id="nav-links"><li><a href="/datasets/">Datasets</a></li><li><a href="/custom-collection">Custom collection</a></li><li><a href="/content-owners">Content owners</a></li><li><a href="/business-data">Business data</a></li></ul></nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="https://calendar.app.google/omsCyEfPso2KYJsH8" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn btn-primary btn-sm" href="/contact">Contact us</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14"/></svg></button>
+    </div>
   </div>
-</div>
+</header>
+<main id="main">
 
-<main class="chooser">
-  <a class="side side-a" href="studios.html">
-    <div class="side-inner">
-      <div class="side-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#B3A1FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5M16 4v5M8 20v-5M16 20v-5"/></svg>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>AI training data, licensed from the people who own it.</h1>
+        <p class="lede">ModelCore licenses, enriches, and sources rights-cleared data across eight modalities. AI teams get data they can defend. Content owners get paid for what they hold.</p>
       </div>
-      <div class="kicker">Content owners</div>
-      <h2>I own content</h2>
-      <p>Studios, publishers, and rights holders. License, enrich, and monetize your library, and power your production workflows.</p>
-      <span class="side-cta">Enter <span class="arrow">→</span></span>
+      <canvas id="orb" aria-hidden="true"></canvas>
     </div>
-  </a>
+    <div class="paths">
+      <a class="path path-buy" href="/datasets/">
+        <span class="who">For AI labs and enterprise ML teams</span>
+        <h2>I need data</h2>
+        <p>Browse 71 ready-to-license datasets, request a free sample, or commission data collected to your spec.</p>
+        <span class="go">Browse datasets <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a class="path path-own" href="/content-owners">
+        <span class="who">For studios, publishers, and rights holders</span>
+        <h2>I own content</h2>
+        <p>License your library to AI labs on your terms. We enrich and package it, and you keep ownership.</p>
+        <span class="go">License your content <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+    </div>
+    <p class="paths-note">Have company data like messaging, docs, CRM, or code? <a class="link" href="/business-data">License your business data</a></p>
+  </div>
+</section>
 
-  <a class="side side-b" href="labs.html">
-    <div class="side-inner">
-      <div class="side-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6A45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>
-      </div>
-      <div class="kicker">Data buyers</div>
-      <h2>I need data</h2>
-      <p>Engineers, labs, and enterprises. Browse the library, commission collection, and enrich your datasets, fast.</p>
-      <span class="side-cta">Enter <span class="arrow">→</span></span>
+<section class="wrap section" aria-labelledby="mods-h">
+  <div class="section-head">
+    <h2 id="mods-h">Data across every modality.</h2>
+    <p>71 off-the-shelf datasets, each with a datasheet and a free sample on request.</p>
+  </div>
+  <div class="mods"><a class="mod" href="/datasets/#speech"><span>12 datasets</span><h3>Speech &amp; Audio</h3><p>Conversational, accented, emotional, low-resource &amp; contact-center speech.</p></a><a class="mod" href="/datasets/#image"><span>8 datasets</span><h3>Images &amp; Vision</h3><p>Captioned image–text, OCR, charts, medical &amp; geospatial imagery.</p></a><a class="mod" href="/datasets/#video"><span>11 datasets</span><h3>Video &amp; Multimodal</h3><p>Long-form, instructional, egocentric &amp; synchronized video.</p></a><a class="mod" href="/datasets/#text"><span>8 datasets</span><h3>Text &amp; Documents</h3><p>Editorial, documents, parallel, legal, scientific &amp; web text.</p></a><a class="mod" href="/datasets/#code"><span>8 datasets</span><h3>Code &amp; Software</h3><p>Permissive code, execution traces, PRs, repos &amp; notebooks.</p></a><a class="mod" href="/datasets/#reason"><span>8 datasets</span><h3>Reasoning &amp; Evaluation</h3><p>Chain-of-thought, math, agentic, verifiable &amp; benchmark data.</p></a><a class="mod" href="/datasets/#feedback"><span>8 datasets</span><h3>Human Feedback &amp; Safety</h3><p>Preference, red-team, moderation, expert Q&amp;A &amp; demonstrations.</p></a><a class="mod" href="/datasets/#robotics"><span>8 datasets</span><h3>Robotics, Sensor &amp; Autonomous</h3><p>Teleoperation, LiDAR, driving, IMU &amp; multi-sensor fusion.</p></a></div>
+</section>
+
+<section class="wrap section" style="padding-top:0" aria-labelledby="ways-h">
+  <div class="section-head">
+    <h2 id="ways-h">Four ways to work with us.</h2>
+    <p>Start with what is already built, or have us build exactly what you need.</p>
+  </div>
+  <div class="ways">
+    <div class="way"><h3>License a dataset</h3><p>Rights-cleared datasets ready to download, with a sample and datasheet before you commit.</p><a class="link" href="/datasets/">Browse datasets</a></div>
+    <div class="way"><h3>Commission collection</h3><p>Data collected to your exact spec: any language, domain, modality, or annotation schema.</p><a class="link" href="/custom-collection">Start a brief</a></div>
+    <div class="way"><h3>Enrich your data</h3><p>Send us raw content. We return it with transcripts, labels, captions, and quality scores attached.</p><a class="link" href="/custom-collection#enrichment">How enrichment works</a></div>
+    <div class="way"><h3>License your content</h3><p>Own a library or company data? We turn it into a licensable product and find the buyers.</p><a class="link" href="/content-owners">See how it works</a></div>
+  </div>
+</section>
+
+<section class="wrap section" style="padding-top:0" aria-labelledby="del-h">
+  <div class="delivery">
+    <div>
+      <h2 id="del-h" style="font-size:clamp(28px,3.8vw,42px)">Model-ready, not raw.</h2>
+      <p class="muted" style="margin-top:14px;font-size:17.5px">Every asset ships with the labels models train on. This is real output for a 27-minute, three-speaker Arabic conversation.</p>
+      <ul>
+        <li><div><b>Word-level transcripts.</b> Timestamps and confidence for every word, split by speaker.</div></li>
+        <li><div><b>One schema across modalities.</b> The same JSON structure for speech, image, video, text, and code.</div></li>
+        <li><div><b>Quality and provenance.</b> Audio quality, synthetic-content scores, and the rights record travel with the file.</div></li>
+      </ul>
     </div>
-  </a>
+    <figure class="code">
+      <figcaption class="code-head"><span>transcription.json</span><span>excerpt</span></figcaption>
+      <pre><code>{
+  <span class="k">"asset_id"</span>: <span class="s">"ar-MISC-15m-002"</span>,
+  <span class="k">"language"</span>: <span class="s">"ar"</span>,
+  <span class="k">"duration_seconds"</span>: <span class="n">1610.401</span>,
+  <span class="k">"speaker_count"</span>: <span class="n">3</span>,
+  <span class="k">"utterances"</span>: [{
+    <span class="k">"speaker"</span>: <span class="n">0</span>, <span class="k">"start"</span>: <span class="n">1.521</span>, <span class="k">"end"</span>: <span class="n">12.32</span>,
+    <span class="k">"confidence"</span>: <span class="n">0.735</span>,
+    <span class="k">"words"</span>: [
+      { <span class="k">"word"</span>: <span class="s">"طيب"</span>, <span class="k">"start"</span>: <span class="n">1.521</span>, <span class="k">"end"</span>: <span class="n">2.462</span>, <span class="k">"confidence"</span>: <span class="n">0.766</span> },
+      { <span class="k">"word"</span>: <span class="s">"خلينا"</span>, <span class="k">"start"</span>: <span class="n">2.542</span>, <span class="k">"end"</span>: <span class="n">3.464</span>, <span class="k">"confidence"</span>: <span class="n">0.676</span> },
+      { <span class="k">"word"</span>: <span class="s">"نتكلم"</span>, <span class="k">"start"</span>: <span class="n">3.484</span>, <span class="k">"end"</span>: <span class="n">3.885</span>, <span class="k">"confidence"</span>: <span class="n">0.777</span> },
+      …
+    ]
+  }, … ]
+}</code></pre>
+      <div class="files" aria-label="Files delivered with this asset"><span>metadata.json</span><span>transcription.json</span><span>age-gender.json</span><span>sentiment.json</span><span>topic.json</span><span>summary.json</span><span>content-class.json</span><span>audio-quality.json</span><span>vocal-isolation</span></div>
+    </figure>
+  </div>
+</section>
+
+<!--
+  CASE STUDIES — hidden until you add real, anonymized deals.
+  For each card: fill in the buyer type, the headline number and unit, a title, and two sentences on what you delivered.
+  Delete unused cards, then remove the word "hidden" from the <section> tag below.
+-->
+<section class="wrap section" style="padding-top:0" id="case-studies" aria-labelledby="cs-h" hidden>
+  <div class="section-head"><h2 id="cs-h">Recent deliveries.</h2><p>Anonymized at our clients' request.</p></div>
+  <div class="cases">
+    <article class="case"><span class="who">[Buyer type, e.g. Frontier AI lab]</span><div class="big">[Number]</div><div class="unit">[unit, e.g. hours delivered]</div><h3>[What the data was for]</h3><p>[What you delivered, how it was enriched, and how fast.]</p></article>
+    <article class="case"><span class="who">[Buyer type]</span><div class="big">[Number]</div><div class="unit">[unit]</div><h3>[What the data was for]</h3><p>[What you delivered.]</p></article>
+    <article class="case"><span class="who">[Buyer type]</span><div class="big">[Number]</div><div class="unit">[unit]</div><h3>[What the data was for]</h3><p>[What you delivered.]</p></article>
+  </div>
+</section>
+
+<section class="wrap section" style="padding-top:0" aria-labelledby="why-h">
+  <div class="section-head"><h2 id="why-h">Built for teams that can't take rights risk.</h2></div>
+  <div class="points">
+    <div><h3>Provenance you can defend</h3><p>Every record carries documented consent and a license chain, with an audit trail on delivery.</p></div>
+    <div><h3>Sourced from the owner</h3><p>We license directly from studios, publishers, and contributors, not from resellers.</p></div>
+    <div><h3>Sample before you commit</h3><p>A representative slice and full datasheet on request, so you can test fit first.</p></div>
+  </div>
+</section>
+
+<section class="wrap section" style="padding-top:0" aria-labelledby="faq-h">
+  <div class="section-head"><h2 id="faq-h">Common questions.</h2></div>
+  <div class="faq"><details><summary>What do I get when I license a dataset?</summary><p>The source files (audio, image, video, text, code, or sensor data), cleaned, deduplicated, and consistently formatted, plus enrichment as JSON and JSONL sidecars: transcripts, speaker labels, captions, boxes, masks, or preferences depending on the modality. Every delivery includes a datasheet and the documentation behind the rights.</p></details><details><summary>Can I see a sample before committing?</summary><p>Yes. Every dataset page has a sample request. We send a representative slice and the datasheet so you can evaluate fit before any licensing conversation.</p></details><details><summary>What does rights-cleared mean?</summary><p>Each record carries documented consent and a license chain we can show you. You receive an audit trail tying the data to its source and rights basis, so your legal team can defend its use.</p></details><details><summary>What if the data I need isn&#x27;t in the catalogue?</summary><p>We collect it. Share a spec covering language, domain, modality, annotation schema, and volume, and our sourcing network and enrichment pipeline build it to order.</p></details><details><summary>How is data delivered?</summary><p>As JSON and JSONL alongside the raw media, with WebDataset or Parquet on request. We deliver to AWS S3, Google Cloud Storage, Azure, or your own bucket.</p></details><details><summary>Do you offer exclusive licenses?</summary><p>Many datasets are available both non-exclusively and exclusively. Exclusive and first-look deals are scoped case by case.</p></details><details><summary>I own a content library. How do I get paid for it?</summary><p>Tell us what you hold. We review the rights you control, enrich the content into a licensable product, and license it to vetted AI buyers on terms you set. You keep ownership and earn recurring revenue.</p></details><details><summary>How do you handle privacy and personal data?</summary><p>Collection follows documented consent, and we screen and redact personal information appropriately for each modality. Details are in each dataset&#x27;s datasheet and our Privacy Policy and Data Processing Addendum.</p></details></div>
+</section>
+
+<section class="wrap section-tight"><div class="band"><div><h2>Tell us what you need.</h2><p>Data to train on, or data to license. We reply within one business day.</p></div><div class="actions"><a class="btn btn-primary" href="/contact">Contact us</a><a class="btn btn-ghost" href="https://calendar.app.google/omsCyEfPso2KYJsH8" target="_blank" rel="noopener">Book a call</a></div></div></section>
+
 </main>
-
-
-<div class="orb3d"><div class="logo3d" id="logo3d"></div></div>
-
-<div class="fine">
-  <a href="explore.html"><span class="em">Neither?</span> Explore the full platform →</a>
-</div>
-
-<script>
-  var c=document.getElementById('bg'), x=c.getContext('2d'), W,H,raf,t=0;
-  var mx=.5,my=.5,tmx=.5,tmy=.5,pts=[],N,yaw=0,yoff=0,poff=0,flow=[],Rsurf=0,rMax=0;
-  var stops=[[123,97,255],[177,79,240],[255,106,69]];
-  function col(v){v=v<0?0:v>1?1:v;var i=v<.5?0:1,f=v<.5?v/.5:(v-.5)/.5,a=stops[i],b=stops[i+1];return (a[0]+(b[0]-a[0])*f|0)+','+(a[1]+(b[1]-a[1])*f|0)+','+(a[2]+(b[2]-a[2])*f|0);}
-  function resize(){W=c.width=innerWidth;H=c.height=innerHeight;N=Math.min(520,(W*H/4400)|0);pts=[];for(var i=0;i<N;i++){var yv=1-2*(i+0.5)/N,r=Math.sqrt(1-yv*yv),ph=i*2.399963;pts.push([Math.cos(ph)*r,yv,Math.sin(ph)*r]);}Rsurf=Math.min(W,H)*0.32;rMax=Math.sqrt(W*W+H*H)*0.62;flow=[];var M=Math.min(130,(W*H/11000)|0)+40;for(var k=0;k<M;k++)flow.push(newFlow(k%2));}
-  addEventListener('mousemove',function(e){tmx=e.clientX/innerWidth;tmy=e.clientY/innerHeight;});
-  addEventListener('resize',resize);
-  function markSVG(i){return '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ll'+i+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset=".5" stop-color="#B14FF0"/><stop offset="1" stop-color="#FF6A45"/></linearGradient></defs><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="url(#ll'+i+')" stroke-width="2.5"/><rect x="30" y="30" width="40" height="40" rx="13" fill="none" stroke="url(#ll'+i+')" stroke-width="13"/><rect x="44" y="44" width="12" height="12" rx="4.5" fill="url(#ll'+i+')"/></svg>';}
-  (function(){var L=10,h='';for(var i=0;i<L;i++){var z=(i-(L-1)/2)*2.6,o=0.16+0.84*(i/(L-1));h+='<div class="ll" style="transform:translateZ('+z+'px);opacity:'+o+'">'+markSVG(i)+'</div>';}var el=document.getElementById('logo3d');if(el)el.innerHTML=h;})();
-  var l3=document.getElementById('logo3d');
-  function newFlow(m){return {a:Math.random()*6.2832,m:m,r:Rsurf+(rMax-Rsurf)*Math.random(),sp:0.5+Math.random()*1.1};}
-  function draw(){
-    x.globalCompositeOperation='source-over';x.clearRect(0,0,W,H);
-    mx+=(tmx-mx)*.05;my+=(tmy-my)*.05;
-    yaw+=0.0025;yoff+=((mx-.5)*0.5-yoff)*0.04;poff+=((my-.5)*0.45-poff)*0.04;
-    var cx=W/2,cy=H/2,R=Math.min(W,H)*0.34,f=2.3;
-    var Y=yaw+yoff,cyw=Math.cos(Y),syw=Math.sin(Y),cp=Math.cos(poff),sp=Math.sin(poff);
-    x.globalCompositeOperation='lighter';
-    var gl=x.createRadialGradient(cx,cy,0,cx,cy,R*0.9);gl.addColorStop(0,'rgba(140,110,255,0.13)');gl.addColorStop(1,'rgba(140,110,255,0)');x.fillStyle=gl;x.fillRect(0,0,W,H);
-    for(var i=0;i<N;i++){var P=pts[i];var xr=P[0]*cyw-P[2]*syw,zr=P[0]*syw+P[2]*cyw,yr=P[1]*cp-zr*sp,zr2=P[1]*sp+zr*cp;var pe=f/(f-zr2),px=cx+xr*R*pe,py=cy+yr*R*pe,a=(zr2+1)/2;x.fillStyle='rgba('+col((xr+1)/2)+','+(0.10+a*0.6)+')';x.beginPath();x.arc(px,py,0.7+a*2.0,0,6.2832);x.fill();}
-    for(var k=0;k<flow.length;k++){var fp=flow[k];
-      if(fp.m===0){fp.r+=fp.sp;if(fp.r>rMax){fp.r=Rsurf;fp.a=Math.random()*6.2832;}}else{fp.r-=fp.sp;if(fp.r<Rsurf){fp.r=rMax;fp.a=Math.random()*6.2832;}}
-      var ca=Math.cos(fp.a),sa=Math.sin(fp.a),tail=fp.m===0?-20:20,rt=fp.r+tail;
-      var hx=cx+ca*fp.r,hy=cy+sa*fp.r,tx=cx+ca*rt,ty=cy+sa*rt;
-      var nrm=(fp.r-Rsurf)/(rMax-Rsurf),al=0.12+0.62*(1-nrm),rgb=col(hx/W);
-      x.strokeStyle='rgba('+rgb+','+al+')';x.lineWidth=1.5;x.beginPath();x.moveTo(tx,ty);x.lineTo(hx,hy);x.stroke();
-      x.fillStyle='rgba('+rgb+','+(al+0.22)+')';x.beginPath();x.arc(hx,hy,1.5,0,6.2832);x.fill();
-    }
-    var ry=Math.sin(t*0.5)*26+(mx-.5)*48,rx=-(my-.5)*30+Math.sin(t*0.37)*7;
-    if(l3)l3.style.transform='rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg)';
-    t+=0.01;raf=requestAnimationFrame(draw);
-  }
-  resize();
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){draw();cancelAnimationFrame(raf);}else draw();
-</script>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/" aria-label="ModelCore home"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="lgf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset=".5" stop-color="#B14FF0"/><stop offset="1" stop-color="#FF6A45"/></linearGradient></defs><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="url(#lgf)" stroke-width="3"/><rect x="30" y="30" width="40" height="40" rx="13" fill="none" stroke="url(#lgf)" stroke-width="13"/><rect x="44" y="44" width="12" height="12" rx="4.5" fill="url(#lgf)"/></svg><span>Model<span class="grad-text">Core</span></span></a>
+        <p>AI training data, licensed from the people who own it.</p>
+      </div>
+      <div><h2>For AI teams</h2><ul><li><a href="/datasets/">Datasets</a></li><li><a href="/custom-collection">Custom collection</a></li><li><a href="/custom-collection#enrichment">Data enrichment</a></li></ul></div>
+      <div><h2>For data owners</h2><ul><li><a href="/content-owners">License your content</a></li><li><a href="/business-data">License business data</a></li></ul></div>
+      <div><h2>Company</h2><ul><li><a href="/contact">Contact</a></li><li><a href="/careers">Careers</a></li><li><a href="https://calendar.app.google/omsCyEfPso2KYJsH8" target="_blank" rel="noopener">Book a call</a></li></ul></div>
+      <div><h2>Legal</h2><ul><li><a href="/legal#privacy">Privacy</a></li><li><a href="/legal#terms">Terms</a></li><li><a href="/legal#license">Data licensing</a></li><li><a href="/legal#cookies">Cookies</a></li></ul></div>
+    </div>
+    <div class="foot-base"><span>© <span id="year">2026</span> ModelCore. All rights reserved.</span><a href="mailto:hello@modelcore.io">hello@modelcore.io</a></div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
