@@ -405,3 +405,15 @@ p{max-width:68ch}
 @media(max-width:600px){.promo-long{display:none}.promo-short{display:inline}.promo p{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1 1 auto;min-width:0}.promo-in{gap:8px;padding-left:16px;padding-right:10px}.promo-new{display:none}.promo-cta{padding:6px 12px;font-size:13px}}
 @media(max-width:380px){.nav{gap:8px}.brand{gap:8px}.brand span{font-size:14.5px;letter-spacing:.04em}.nav-cta{gap:6px}.nav-cta .btn-sm{padding:8px 11px;font-size:13px}}
 @media(max-width:335px){.site-header .brand > span{display:none}}
+
+/* NDA checkbox */
+.field.nda{margin:4px 0 18px}
+.field .check{display:grid!important;padding:12px 14px!important;grid-template-columns:20px 1fr;gap:10px;align-items:start;cursor:pointer;padding:12px 14px;border:1px solid var(--line-2);border-radius:10px;background:rgba(255,255,255,.02);color:var(--muted)!important;font-weight:400!important;font-size:13.5px!important;line-height:1.5;margin:0!important}
+.check:hover{border-color:var(--violet-2)}
+.check input{width:18px;height:18px;margin-top:1px;accent-color:var(--violet);cursor:pointer}
+.check b{color:var(--text);font-weight:600}
+.check:has(input:checked){border-color:var(--violet);background:rgba(123,97,255,.08)}
+#meetings[hidden]{display:none}
+.meetings-iframe-container{border-radius:var(--r-lg);overflow:hidden;background:#fff;min-height:640px}
+
+.note-hs{display:none}.hs-on .note-email{display:none}.hs-on .note-hs{display:inline}

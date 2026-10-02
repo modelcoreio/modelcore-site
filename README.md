@@ -38,6 +38,30 @@ A static site for **modelcore.io**, ready for GitHub Pages. No build step: edit 
    - `CNAME` on `www` → `<your-github-username>.github.io`
 6. Once the certificate issues, tick **Enforce HTTPS**.
 
+## HubSpot (forms and booking)
+
+Every form (contact, catalogue request, custom collection, content owners, business data) submits to HubSpot once `assets/hubspot.js` is filled in. Until then, forms open a pre-filled email instead, so the site works either way. If HubSpot is ever unreachable, the form falls back to email automatically.
+
+**One-time setup in HubSpot (about 15 minutes):**
+
+1. **Find your Hub ID:** click your account name (top right); the number shown is your Hub ID.
+2. **Create two contact properties** (Settings → Properties → Contact properties → Create property). The internal names must match exactly:
+   - `inquiry_type`: single-line text. The site sends one of: Data buyer, Catalogue request, Custom collection, Content owner, Business data, General.
+   - `nda_requested`: single checkbox (true/false).
+3. **Create one form** (Marketing → Forms → Create → Embedded form) with these fields: Email, First name, Last name, Company name, Website URL, Message, `inquiry_type`, `nda_requested`. Publish it, then copy the form's ID (the long code in the page address).
+4. **Copy your meetings link** (Sales → Meetings), e.g. `https://meetings.hubspot.com/your-name`.
+5. Open `assets/hubspot.js`, paste in `portalId`, `formGuid`, and `meetingsUrl`, and upload the file.
+6. Submit a test inquiry with the NDA box ticked and confirm the contact appears in HubSpot with both new properties set.
+
+**Recommended automations (HubSpot workflows):**
+
+- **NDA first:** when `nda_requested` is true, send your mutual NDA for e-signature (HubSpot's e-signature, or a PandaDoc/DocuSign integration) and notify the owner, so no details go out before it's signed.
+- **Routing:** assign by `inquiry_type`. Data buyer, Catalogue request, and Custom collection go to the data team; Content owner and Business data go to content partnerships.
+
+**Booking:** with `meetingsUrl` set, every "Book a call" button opens your HubSpot scheduler, and `/contact` shows it inline.
+
+**Privacy:** HubSpot's tracking code sets cookies. If you have EU or UK visitors, turn on HubSpot's cookie banner (Settings → Privacy & Consent), and make sure the Privacy and Cookie policies name HubSpot as a service provider. Set `loadTracking: false` in `hubspot.js` to submit forms without the tracking code.
+
 ## Featured bar
 
 The bar above the header promotes business data and links to `/business-data#estimate`. It's hidden on the business data page itself. Visitors can dismiss it, and it stays dismissed on their browser.
@@ -82,7 +106,7 @@ Forms open the visitor's email app with a pre-filled message. Make sure these in
 ## Confirm before promoting the site
 
 - **Legal changes for counsel to review:** the public Data Licensing Agreement was replaced by a plain-language "How licensing works" summary (`/legal#license`). Two sentences in the Terms of Service now refer to the signed License Agreement instead of the old public DLA, and the audio per-minute pricing line was removed from the Terms. Have a standard license agreement ready to send with quotes.
-- **Business data claims:** "encrypted in transit and at rest" and "identifiers removed" are commitments security teams will ask you to document.
+- **Business data commitments:** the page now promises that sellers export their own data (no logins shared), that a de-identification party is named in each agreement, and that sellers approve a sample before release. Make sure your agreements and partner contracts (e.g. Tonic.ai) reflect this. The Privacy Policy and DPA still describe encryption in transit and at rest; confirm with counsel that this matches your actual setup.
 - **Legal documents** are templates. Have counsel review them.
 - **Process claims on the training data page:** NDA, Data Processing Addendum, security questionnaires, and quality results reported in each datasheet. Make sure your team can do each of these before launch.
 - **Capability claims:** each data-type page lists what you "can supply." Remove anything you wouldn't take on as a custom collection either.

@@ -19,37 +19,97 @@
   /* footer year */
   var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
 
-  /* forms -> pre-filled email (no third-party service needed) */
+  /* ---------- forms: HubSpot when configured, otherwise a pre-filled email ---------- */
+  var HS=window.MC_HUBSPOT||{};
+  if(HS.portalId&&HS.formGuid) document.documentElement.classList.add('hs-on');
   function labelFor(form,el){
+    if(el.name==='nda') return 'NDA requested';
     if(el.type==='checkbox'){ var fs=el.closest('fieldset'); var lg=fs&&fs.querySelector('legend'); return lg?lg.textContent.trim():el.name; }
     var l=el.id&&form.querySelector('label[for="'+el.id+'"]'); return l?l.textContent.trim():el.name;
+  }
+  function collect(form){
+    var groups={}, order=[], by={};
+    Array.prototype.forEach.call(form.elements,function(el){
+      if(!el.name||el.type==='submit') return;
+      by[el.name]=el;
+      var key=labelFor(form,el);
+      if(el.name==='nda'){ order.push(key); groups[key]=el.checked?'Yes':'No'; return; }
+      if(el.type==='checkbox'){ if(!groups[key]){groups[key]=[];order.push(key);} if(el.checked) groups[key].push(el.value); return; }
+      if(el.tagName==='TEXTAREA') return;
+      order.push(key); groups[key]=el.value.trim();
+    });
+    var lines=[]; order.forEach(function(k){ var v=groups[k]; if(Array.isArray(v)) v=v.join(', '); if(v) lines.push(k+': '+v); });
+    var msg=form.querySelector('textarea'), note=msg&&msg.value.trim();
+    return { lines:lines, note:note, by:by };
+  }
+  function inquiryType(form){
+    var router=form.querySelector('[data-route]');
+    if(router){ var o=router.options[router.selectedIndex]; if(o&&o.dataset.inquiry) return o.dataset.inquiry; }
+    return form.getAttribute('data-inquiry')||'General';
+  }
+  function routeEmail(form){
+    var to=form.getAttribute('data-mailto'), router=form.querySelector('[data-route]');
+    if(router){ var o=router.options[router.selectedIndex]; if(o&&o.dataset.to) to=o.dataset.to; }
+    return to;
+  }
+  function cookie(n){ var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)')); return m?decodeURIComponent(m[1]):''; }
+  function val(by,n){ return by[n]&&by[n].value?by[n].value.trim():''; }
+  function done(form,html){
+    var d=document.createElement('div'); d.className='form-done'; d.setAttribute('role','status'); d.setAttribute('tabindex','-1'); d.innerHTML=html;
+    form.replaceWith(d); d.focus({preventScroll:true});
+  }
+  function esc(t){ return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function viaEmail(form,data,nda,prefix){
+    var to=routeEmail(form), body=data.lines.slice(); if(data.note){ body.push('',data.note); }
+    var subjBase=form.getAttribute('data-subject')||'ModelCore inquiry', org=val(data.by,'company')||val(data.by,'organization');
+    window.location.href='mailto:'+to+'?subject='+encodeURIComponent(subjBase+(org?': '+org:''))+'&body='+encodeURIComponent(body.join('\r\n'));
+    done(form,(prefix||'')+'<h3>Your email is ready to send.</h3><p>We opened a pre-filled message to <a class="link" href="mailto:'+to+'">'+to+'</a> in your mail app. Press send and we reply within one business day.'+(nda?' We\'ll send a mutual NDA for signature before any details are shared.':'')+' If nothing opened, email that address directly.</p>');
   }
   document.querySelectorAll('form[data-mailto]').forEach(function(form){
     form.addEventListener('submit',function(ev){
       ev.preventDefault();
       if(!form.checkValidity()){ form.reportValidity(); return; }
-      var to=form.getAttribute('data-mailto');
-      var router=form.querySelector('[data-route]');
-      if(router){ var opt=router.options[router.selectedIndex]; if(opt&&opt.dataset.to) to=opt.dataset.to; }
-      var lines=[], groups={}, order=[];
-      Array.prototype.forEach.call(form.elements,function(el){
-        if(!el.name||el.type==='submit') return;
-        var key=labelFor(form,el);
-        if(el.type==='checkbox'){ if(!groups[key]){groups[key]=[];order.push(key);} if(el.checked) groups[key].push(el.value); return; }
-        if(el.tagName==='TEXTAREA') return;
-        order.push(key); groups[key]=el.value.trim();
+      var data=collect(form), nda=!!(data.by.nda&&data.by.nda.checked), type=inquiryType(form);
+      var guid=(HS.formOverrides&&HS.formOverrides[type])||HS.formGuid;
+      if(!(HS.portalId&&guid&&window.fetch)){ viaEmail(form,data,nda); return; }
+      var full=val(data.by,'name'), sp=full.indexOf(' ');
+      var details=data.lines.filter(function(l){ return !/^(Name|Your name|Work email|Company|Organization|Website|NDA requested):/.test(l); });
+      var message=details.join('\n')+(data.note?(details.length?'\n\n':'')+data.note:'');
+      var fields=[
+        {name:'email',value:val(data.by,'email')},
+        {name:'firstname',value:sp>0?full.slice(0,sp):full},
+        {name:'lastname',value:sp>0?full.slice(sp+1):''},
+        {name:'company',value:val(data.by,'company')||val(data.by,'organization')},
+        {name:'website',value:val(data.by,'website')},
+        {name:'message',value:message},
+        {name:'inquiry_type',value:type},
+        {name:'nda_requested',value:nda?'true':'false'}
+      ].filter(function(f){ return f.value!==''; });
+      var ctx={pageUri:location.href,pageName:document.title}, hutk=cookie('hubspotutk'); if(hutk) ctx.hutk=hutk;
+      var btn=form.querySelector('[type=submit]'), label=btn&&btn.textContent; if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
+      fetch(HS.formsEndpoint.replace(/\/$/,'')+'/'+encodeURIComponent(HS.portalId)+'/'+encodeURIComponent(guid),{
+        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:fields,context:ctx})
+      }).then(function(r){
+        if(!r.ok) throw new Error('HubSpot '+r.status);
+        done(form,'<h3>Thanks, we have it.</h3><p>'+(nda?'Because you asked for an NDA, we\'ll send a mutual NDA to <b>'+esc(val(data.by,'email'))+'</b> for signature first, before any details are shared. ':'')+'Our team will reply within one business day.'+(HS.meetingsUrl?' Want to talk sooner? <a class="link" href="'+esc(HS.meetingsUrl)+'" target="_blank" rel="noopener">Book a call</a>.':'')+'</p>');
+      }).catch(function(){
+        if(btn){ btn.disabled=false; btn.textContent=label; }
+        viaEmail(form,data,nda,'<p class="muted" style="margin:0 auto 10px">We couldn\'t reach our form service, so here\'s an email instead.</p>');
       });
-      order.forEach(function(k){ var v=groups[k]; if(Array.isArray(v)) v=v.join(', '); if(v) lines.push(k+': '+v); });
-      var msg=form.querySelector('textarea'); if(msg&&msg.value.trim()){ lines.push('', msg.value.trim()); }
-      var subjBase=form.getAttribute('data-subject')||'ModelCore inquiry';
-      var org=form.querySelector('[name=company],[name=organization]');
-      var subject=subjBase+(org&&org.value.trim()?': '+org.value.trim():'');
-      window.location.href='mailto:'+to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\r\n'));
-      var done=document.createElement('div'); done.className='form-done'; done.setAttribute('role','status');
-      done.innerHTML='<h3>Your email is ready to send.</h3><p>We opened a pre-filled message to <a class="link" href="mailto:'+to+'">'+to+'</a> in your mail app. Press send and we reply within one business day. If nothing opened, email that address directly.</p>';
-      form.replaceWith(done);
     });
   });
+
+  /* ---------- booking: HubSpot meetings when configured ---------- */
+  if(HS.meetingsUrl){
+    document.querySelectorAll('a[href^="https://calendar.app.google/"]').forEach(function(a){ a.href=HS.meetingsUrl; });
+    var mt=document.getElementById('meetings');
+    if(mt){
+      var box=document.createElement('div'); box.className='meetings-iframe-container';
+      box.setAttribute('data-src',HS.meetingsUrl+(HS.meetingsUrl.indexOf('?')>-1?'&':'?')+'embed=true');
+      mt.appendChild(box); mt.hidden=false;
+      var sc=document.createElement('script'); sc.src='https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js'; sc.async=true; document.body.appendChild(sc);
+    }
+  }
 
   /* catalogue filter + search (all cards are already in the HTML) */
   var grid=document.getElementById('catalogue');

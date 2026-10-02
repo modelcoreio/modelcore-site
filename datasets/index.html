@@ -42,7 +42,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <aside class="promo" aria-label="Announcement" data-id="bizdata-1"><div class="wrap promo-in">
   <span class="promo-new">New</span>
-  <p><span class="promo-long">Turn your company's data into recurring revenue.</span><span class="promo-short">License company data</span></p>
+  <p><span class="promo-long">Turn your company's data into revenue.</span><span class="promo-short">License company data</span></p>
   <span class="promo-sys" aria-hidden="true"><i><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h12v7H9l-4 3v-3H4z"/></svg></i><i><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h6l3 3v11H6z"/><path d="M8 10h5M8 13h5"/></svg></i><i><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="14" height="10" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M12 9h3M12 12h2"/></svg></i><i><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 0 0 4v3h14v-3a2 2 0 0 1 0-4V5H3z"/><path d="M8 5v9" stroke-dasharray="1.5 2"/></svg></i><i><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 6l-4 4 4 4M13 6l4 4-4 4"/></svg></i></span>
   <a class="promo-cta" href="/business-data#estimate">Get an estimate</a>
   <button class="promo-x" type="button" aria-label="Dismiss announcement">×</button>
@@ -128,14 +128,15 @@
       <p class="muted" style="margin-top:14px;font-size:17px">Tell us what you're building and we send the relevant catalogue, with volumes, specs, and sample availability. Some datasets are shared only under NDA.</p>
       <ul class="checks"><li><div><b>Free samples</b>A representative slice and datasheet before any commitment.</div></li><li><div><b>Matched to your use</b>We send what fits your model and stage, not a generic list.</div></li><li><div><b>Reply within one business day</b>From our data team, not an autoresponder.</div></li></ul>
     </div>
-    <form class="form" data-mailto="data@modelcore.io" data-subject="Catalogue request" novalidate>
+    <form class="form" data-mailto="data@modelcore.io" data-subject="Catalogue request" data-inquiry="Catalogue request" novalidate>
       <div class="row2"><div class="field"><label for="rq-name">Name</label><input id="rq-name" name="name" autocomplete="name" required></div><div class="field"><label for="rq-email">Work email</label><input id="rq-email" name="email" type="email" autocomplete="email" required></div></div>
       <div class="field"><label for="rq-co">Company</label><input id="rq-co" name="company" autocomplete="organization" required></div>
       <fieldset class="field"><legend>Data types of interest</legend><div class="opts"><label class="opt"><input type="checkbox" name="types" value="Audio &amp; Speech"><span>Audio &amp; Speech</span></label><label class="opt"><input type="checkbox" name="types" value="Video"><span>Video</span></label><label class="opt"><input type="checkbox" name="types" value="Images &amp; Vision"><span>Images &amp; Vision</span></label><label class="opt"><input type="checkbox" name="types" value="Text &amp; Documents"><span>Text &amp; Documents</span></label><label class="opt"><input type="checkbox" name="types" value="Code &amp; Software"><span>Code &amp; Software</span></label><label class="opt"><input type="checkbox" name="types" value="Reasoning &amp; Evaluation"><span>Reasoning &amp; Evaluation</span></label><label class="opt"><input type="checkbox" name="types" value="Human Feedback &amp; Safety"><span>Human Feedback &amp; Safety</span></label><label class="opt"><input type="checkbox" name="types" value="Robotics &amp; Sensor"><span>Robotics &amp; Sensor</span></label><label class="opt"><input type="checkbox" name="types" value="Business Operations Data"><span>Business Operations Data</span></label></div></fieldset>
       <div class="field"><label for="rq-use">Intended use</label><select id="rq-use" name="use"><option>Pretraining</option><option>Fine-tuning</option><option>Reinforcement learning</option><option>Evaluation</option><option>Not sure yet</option></select></div>
       <div class="field"><label for="rq-msg">What are you building?</label><textarea id="rq-msg" name="message" placeholder="Model type, languages, domains, volume, and timeline"></textarea></div>
+      <div class="field nda"><label class="check"><input type="checkbox" name="nda" value="Yes"><span><b>Send me a mutual NDA first.</b> We'll send it for signature before any details are shared or discussed.</span></label></div>
       <button class="btn btn-primary btn-block" type="submit">Request the catalogue</button>
-      <p class="form-note">Opens a pre-filled email in your mail app. See our <a href="/legal#privacy">Privacy Policy</a>.</p>
+      <p class="form-note"><span class="note-email">Opens a pre-filled email in your mail app.</span><span class="note-hs">We reply within one business day.</span> See our <a href="/legal#privacy">Privacy Policy</a>.</p>
     </form>
   </div>
 </section>
@@ -156,6 +157,7 @@
     <div class="foot-base"><span>© <span id="year">2026</span> ModelCore LLC. All rights reserved.</span><a href="mailto:hello@modelcore.io">hello@modelcore.io</a></div>
   </div>
 </footer>
+<script src="/assets/hubspot.js" defer></script>
 <script src="/assets/site.js" defer></script>
 <script src="/assets/motion.js" defer></script>
 </body>
